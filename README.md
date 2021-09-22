@@ -1,4 +1,4 @@
-#This is an online campus platform for students educational needs.
+# Thee online campus learning platform
 
 ## Getting Started
 
