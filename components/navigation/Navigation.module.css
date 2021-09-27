@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cagliostro&display=swap');
+.navBar{
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family: 'Cagliostro', sans-serif;
+    color:#191919;
+    
+}
+.navList{
+    list-style-type: none;
+    display:flex;
+    /* width:%; */
+    justify-content:space-evenly;
+    margin-right:1rem;
+    /* flex-direction:row; */
+}
+.navLinks{
+    list-style-type: none;
+    display:flex;
+    /* width:%; */
+    justify-content:space-evenly;
+    margin-right:1rem;
+    /* flex-direction:row; */
+
+}
+.navLinks li{
+    transition:all 0.3s ease-in-out;
+}
+.navLinks li:hover{
+color:#0070f3;
+}
+.navList li {
+    margin:0 5px;
+    font-weight:bold;
+}
+
+
+.logo{
+    /* font-family: 'Cagliostro', sans-serif; */
+    font-size:28px;
+    font-weight:800;
+    margin-left:1rem;
+}
+.signupButton{
+    background-color:#77059F;
+    color:#fff;
+    padding:4px 15px;
+    border-radius:30px;
+}
+.signupButton:hover{
+    background-color:#9809cc;
+}

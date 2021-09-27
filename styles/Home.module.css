@@ -119,3 +119,13 @@
     flex-direction: column;
   }
 }
+.laibuHeader{
+  font-family:'Cagliostro',sans-serif;
+  color:#0070f3;
+  /* font-size:36px; */
+}
+.title{
+  font-family:'Cagliostro',sans-serif;
+  color:#191919;
+  /* font-size:36px; */
+}
