@@ -1,0 +1,118 @@
+.hideOnDesktop {
+    display: none;
+}
+
+.firstSight {
+    margin: 0;
+    padding: 0;
+    max-width: 80%;
+    margin: auto;
+    /* color: red; */
+    /* border: 2px solid red; */
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LandingImg {
+    /* border: 2px solid blue; */
+    /* width: 80%; */
+    margin-right: 2em;
+}
+
+.leftSection {
+    text-align: left;
+}
+
+.tagText {
+    /* border: 2px solid red; */
+    color: #07093E;
+    font-size: 2rem;
+    /* transform: translateY(-10%); */
+}
+
+.tagText h3 {
+    /* border: 2px solid blue; */
+    font-weight: 800;
+}
+
+.tagLine {
+    font-size: 1.4rem;
+    transform: translateY(-100%);
+}
+
+.cta {
+    /* border: 2px solid red; */
+    transform: translateX(-20%);
+    color: #fff;
+    background: rgb(9, 16, 208);
+    background: linear-gradient(86deg, rgba(9, 16, 208, 1) 0%, rgba(146, 31, 187, 1) 85%);
+    max-width: 50%;
+    margin: auto;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: .28em;
+}
+
+@media (max-width: 1032px) {
+    .tagText {
+        transform: translateY(0%);
+    }
+    .tagLine {
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 450px) {
+    .hideOnDesktop {
+        display: block;
+    }
+    .firstSight {
+        position: relative;
+    }
+    .LandingImg {
+        /* display: none; */
+        position: absolute;
+        bottom: 4em;
+        left: 1em;
+        width: 70%;
+    }
+    .leftSection {
+        position: absolute;
+        bottom: 5vh;
+        height: 80vh;
+        /* border: 2px solid red; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+    .tagText {
+        /* border: 2px solid red; */
+        color: #07093E;
+        font-size: 1.3rem;
+        transform: translateY(20%);
+    }
+    .tagLine {
+        font-size: 1rem;
+    }
+    .cta {
+        /* position: absolute;
+        bottom: 0; */
+        /* border: 2px solid red; */
+        transform: translateY(0%);
+        max-width: 75%;
+        font-size: .9rem;
+        padding: .65em 4.5em;
+        margin: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .tagText {
+        transform: translateY(0%);
+    }
+}

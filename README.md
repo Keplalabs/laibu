@@ -1,6 +1,8 @@
-# Thee online campus learning platform
+# <h1 style="color:purple;font-weight:bold;font-size:48px;font-family:Cagliostro open-sans">Laibu</h1>
 
-## Getting Started
+## Thee online campus learning platform
+
+### Getting Started
 
 
 First, install dependencies

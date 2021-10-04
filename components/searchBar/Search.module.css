@@ -1,0 +1,29 @@
+.searchForm {
+    display: none;
+}
+
+.searchInput {
+    padding: .8em;
+    border-radius: 20px;
+    width: 100%;
+    border: 1px solid #CECECE;
+    text-align: center;
+    transform: translateY(50%);
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.searchInput::placeholder {
+    text-align: center;
+}
+
+@media (max-width: 450px) {
+    .searchForm {
+        /* border: 2px solid red; */
+        display: block;
+        text-align: center;
+        /* min-width: 100%; */
+    }
+}
