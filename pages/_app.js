@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import Navigation from '../components/navigation/Navigation'
+import Landing from '../components/landingPage/Landing'
 import { ThemeProvider } from 'styled-components'
 import {Provider as AuthProvider} from 'next-auth/client'
 import {Provider, useDispatch } from 'react-redux'
@@ -23,6 +24,7 @@ function MyApp({ Component,pageProps }) {
         <Login/>
       
         <Navigation />
+        <Landing/>
         <Component {...pageProps} />
       </AuthProvider>
     </ThemeProvider>

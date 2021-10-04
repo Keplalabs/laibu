@@ -29,6 +29,7 @@
 .navLinks li:hover {
   color: #0070f3;
 }
+
 .navList li {
   margin: 0 5px;
   font-weight: bold;
@@ -50,4 +51,8 @@
 }
 .signupButton:hover {
   background-color: #9809cc;
+}
+
+.signupButton:hover {
+    background-color: #9809cc;
 }

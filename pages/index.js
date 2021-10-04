@@ -15,11 +15,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <span className={styles.laibuHeader}>Laibu {session?session.user.name:null}</span>
+        {/* <h1 className={styles.title}>
+          Welcome to <span className={styles.laibuHeader}>Laibu</span>
         </h1>
 
-      
+       */}
 
       </main>
 
