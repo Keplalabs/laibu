@@ -1,0 +1,42 @@
+.loginContainer{
+  width: 100%;
+  padding:2rem;
+}
+.loginFormContainer {
+  margin:2rem 0;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+
+.socialButtonsContainer{
+    margin:0 auto;
+    width: 100%;
+}
+.passwordInput{
+  position: relative;
+}
+.PasswordRevealer{
+position: absolute;
+top:50%;
+cursor: pointer;
+right:0;
+transform: translate(-50%, -60%);
+
+/* transform: translateX(-50%); */
+
+}
+.PasswordRevealerButton{
+  border:none;
+  background-color: transparent;
+  color:#191919;
+}
+.headerContainer{
+  display:flex;
+  align-items: center;
+  margin:1rem 0;
+  justify-content: space-between;
+}
