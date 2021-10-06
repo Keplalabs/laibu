@@ -27,3 +27,26 @@ export const LoginButton = styled.button`
     cursor:pointer;
 }
  `;
+
+export const SignUpButton = styled.button`
+  background:linear-gradient(45deg, #0910D0,#76059E);
+  color:#fff;
+  width:60%;
+  /* display: inline-block; */
+  margin-top:2rem;
+  border-radius:10px;
+  border: none; /* Remove borders */
+  transition: all 0.2s ease-in-out;
+  padding:15px; /* Some padding */
+  font-size: 18px; /* Set a font-size */
+  @media (max-width:900px){
+    width:75%;
+  }
+  @media (max-width:600px){
+    width:100%;
+  }
+  &:hover{
+    transform:scale(1.05);
+    cursor:pointer;
+}
+ `;

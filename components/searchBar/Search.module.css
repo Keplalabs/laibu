@@ -1,14 +1,14 @@
 .searchForm {
-    display: none;
+    width:80%;
+    margin:1rem auto;
 }
-
-.searchInput {
-    padding: .8em;
-    border-radius: 20px;
-    width: 100%;
-    border: 1px solid #CECECE;
-    text-align: center;
-    transform: translateY(50%);
+    .searchInput {
+        padding: .8em;
+        border-radius: 20px;
+        width: 100%;
+        border:none;
+        text-align: center;
+        box-shadow:2px 2px 3px 0 rgb(189, 188, 188);
 }
 
 .searchInput:focus {

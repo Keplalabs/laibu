@@ -1,19 +1,9 @@
 
 import Link from 'next/link'
-import Image from 'next/Image'
-import styled from 'styled-components'
-import { signOut, useSession } from 'next-auth/client'
+import { useUser } from '@auth0/nextjs-auth0';
 import styles from './Navigation.module.css'
-import { useDispatch, useSelector } from 'react-redux'
-import { showModal } from '../../redux/modal/modalActions'
-import { Button } from '../styledComponents/Buttons'
-// import { logout } from '../../redux/login/loginActions'
 const Navigation = () => {
-    const [user, loading] = useSession()
-    // const user= useSelector(state => state.auth.user)
-    // const loading= useSelector(state => state.auth.loading)
-    // const user= useSelector(state => state.auth.authenticated)
-    const dispatch = useDispatch()
+    const { user, isLoading: loading } = useUser();
     return (
         <div className={styles.navBar}>
             <Link href='/' passHref>
@@ -21,26 +11,24 @@ const Navigation = () => {
             </Link>
             <div className={`${styles.navList} ${!user && loading ? 'loading' : 'loaded'}`}>
                 <ul className={styles.navLinks}>
-                    <li>
+                    <li className={styles.navLink}>
                         <Link href='/about'><a>About</a></Link>
-                    </li>
+                    </li >
                     {user &&
-                        <li>
+                        <li className={styles.navLink}>
                             <Link href='/dashboard'><a>Dashboard</a></Link>
                         </li>
                     }
 
                     {!user && !loading &&
-                        <li >
-                            <Button className={styles.signInButton} onClick={() => dispatch(showModal())}>
+                        <li className={styles.signInButton}>
+                            <a onClick={(e) => { e.preventDefault(); window.location.replace('/api/auth/login') }} >
                                 Login
-                            </Button>
+                            </a>
                         </li>}
 
-                    {user && (<li>
-                        <Link href='/api/auth/signout' >
-                            <a onClick={e => { e.preventDefault(); signOut() }}>Logout</a>
-                        </Link>
+                    {user && (<li className={styles.navLink}>
+                        <Link href='/user/account'><a>Account</a></Link>
                     </li>)}
                 </ul>
             </div>
