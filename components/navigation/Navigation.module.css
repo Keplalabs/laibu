@@ -1,37 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Cagliostro&display=swap");
 .navBar {
-  padding: 15px;
+  padding:  2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: "Cagliostro", sans-serif;
-  color: #191919;
+  color: #fff;
 }
 .navList {
   list-style-type: none;
   display: flex;
   /* width:%; */
   justify-content: space-evenly;
-  margin-right: 1rem;
+  
   /* flex-direction:row; */
 }
 .navLinks {
   list-style-type: none;
   display: flex;
+  font-size: 18px;
   /* width:%; */
   justify-content: space-evenly;
   margin-right: 1rem;
   /* flex-direction:row; */
 }
-.navLinks li {
-  transition: all 0.3s ease-in-out;
+.navLink {
+  transition: all 0.2s ease-in-out;
 }
-.navLinks li:hover {
-  color: #0070f3;
+.navLink:hover {
+  color: #77059F;
 }
 
 .navList li {
-  margin: 0 5px;
+  margin: 0 10px;
   font-weight: bold;
 }
 
@@ -41,18 +41,21 @@
   font-weight: 800;
   margin-left: 1rem;
 }
-.signinButton {
+.signInButton {
   background-color: #77059f;
-  color: #fff;
+  /* color: #fff; */
   padding: 5px 15px;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
   border-radius: 30px;
   border: none;
 }
-.signupButton:hover {
-  background-color: #9809cc;
+.signInButton:hover {
+  transform:scale(1.05);
+  cursor:pointer;  
 }
 
-.signupButton:hover {
-    background-color: #9809cc;
+@media (max-width:600px){
+  .navBar{
+    padding:2rem 1rem;
+  }
 }

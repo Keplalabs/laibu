@@ -4,7 +4,7 @@ import styles from './Search.module.css'
 const Search = () => {
     return (
         <form className={styles.searchForm}>
-            <input id="searchInput" type="text" placeholder="Search Unit Code" className={styles.searchInput} />
+            <input id="searchInput" type="text" placeholder="Search Unit Name or Code" className={styles.searchInput} />
         </form>
     )
 }
