@@ -14,12 +14,6 @@ const Navigation = () => {
                     <li className={styles.navLink}>
                         <Link href='/about'><a>About</a></Link>
                     </li >
-                    {user &&
-                        <li className={styles.navLink}>
-                            <Link href='/dashboard'><a>Dashboard</a></Link>
-                        </li>
-                    }
-
                     {!user && !loading &&
                         <li className={styles.signInButton}>
                             <a onClick={(e) => { e.preventDefault(); window.location.replace('/api/auth/login') }} >

@@ -1,10 +1,12 @@
 import '../styles/globals.css'
+import '../styles/alert.css'
 import Navigation from '../components/navigation/Navigation'
 import Landing from '../components/landingPage/Landing'
 import { ThemeProvider } from 'styled-components'
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
+import Alert from '../components/Alert';
 const theme = {
   colors: {
     color: '#191919',
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
       <ThemeProvider theme={theme}>
         <UserProvider >
           <Navigation />
+          <Alert/>
           {/* <Landing/> */}
           <Component {...pageProps} />
         </UserProvider>
