@@ -1,4 +1,4 @@
-import { api } from '../../urls'
+import { api } from '../../utils/urls'
 // import jwt_decode from 'jwt-decode'
 const r = api.routes
 import { FETCH_REQUEST, FETCH_USERS_FAILURE, FETCH_USERS_SUCCESS, SET_CURRENT_USER, CLEAR_ERROR } from "./loginTypes"

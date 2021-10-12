@@ -1,0 +1,65 @@
+.stepButtons{
+    /* border: 2px solid red; */
+    
+}
+.flexCenter{
+    display:flex;
+    align-items: center;
+    width:100%;
+    margin:1rem 0;
+    justify-content:center;
+    
+}
+.flexBetween{
+    display:flex;
+    align-items: center;
+    width:100%;
+    margin:1rem 0;
+    justify-content:space-between;
+
+}
+.stepParagraph{
+    text-align: center;
+}
+
+.selectContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.selectPlaceholder{
+    color:#191919;
+}
+.selectOptions{
+    display: flex;
+    margin:1rem 0;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.stepsHeader{
+    font-size:36px;
+}
+.selected{
+    border:2px solid greenyellow;
+}
+.stepsContainer{
+    padding:2rem;
+    display: flex;
+    font-family: 'Cagliostro',sans-serif;
+    justify-content: space-evenly;
+    /* color:#fff; */
+    height:100%;
+background-color: #fff5;
+    backdrop-filter: blur(0.7);
+    align-items: center;
+    flex-direction: column;
+}
+.stepContainer{
+    width:100%;
+    display:flex;
+    flex-direction:column ;
+    justify-content: space-evenly;
+    /* align-items: center; */
+
+}

@@ -5,7 +5,6 @@ const initialState = {
     isVisible: false
 }
 export function modalReducer(state = initialState, action) {
-    console.log(action.type)
     switch (action.type) {
         case t.SHOW_MODAL:
             return {

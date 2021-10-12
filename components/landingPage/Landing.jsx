@@ -18,7 +18,7 @@ const Landing = () => {
             <h1 className={styles.tagHeader}>Welcome to <LandingHeader>Laibu</LandingHeader>
               </h1>
               <p className={styles.tagLine}>A place where you can access all your course notes and more  </p>
-            <Search/>
+            <Search placeholder="Search Unit code or Name"/>
             </div>
           </div>
         </div>

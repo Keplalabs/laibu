@@ -6,9 +6,12 @@ import { hideModal } from '../../redux/modal/modalActions';
 
 import styles from './Modal.module.css'
 const WithModal = (props) => {
+  const {disableClose=false}=props
   let isVisible = useSelector(state => state.modal.isVisible)
   const dispatch = useDispatch()
   const close = () => {
+    if (disableClose)
+    return
     dispatch(hideModal())
     dispatch(clearError())
   }
@@ -33,8 +36,8 @@ const WithModal = (props) => {
 
       <div className={styles.modal} onClick={() => close()}>
         <div className={styles.modalDialog} onClick={e => e.stopPropagation()}>
-          <span className={styles.modalClose} onClick={close}>
-            &times;</span>
+          {!disableClose&&<span className={styles.modalClose} onClick={close}>
+            &times;</span>}
           {props.children}
         </div>
       </div>

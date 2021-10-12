@@ -21,23 +21,30 @@ const styles = theme => ({
 });
 
 function getSteps() {
-  return ['Select master blaster campaign settings', 'Create an ad group', 'Create an ad'];
+  return [{body:'What Course are you taking?',footer:'next'},{ body:'What year are you in?',footer:'next'}, {body:'What semester are you in?',footer:'finish'},];
 }
 
 function getStepContent(stepIndex) {
+  const steps=getSteps()
   switch (stepIndex) {
     case 0:
-      return 'Select campaign settings...';
-    case 1:
-      return 'What is an ad group anyways?';
-    case 2:
-      return 'This is the bit I really care about!';
+      return {
+        placeholder:steps[0].placeholder
+      };
+      case 1:
+        return {
+          placeholder:steps[1].placeholder
+        };
+      case 2:
+          return {
+            placeholder:steps[2].placeholder
+          };    
     default:
       return 'Unknown stepIndex';
   }
 }
 
-class Steps extends React.Component {
+const Steps=()=>{
   state = {
     activeStep: 0,
   };
