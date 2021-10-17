@@ -2,6 +2,7 @@ export const stepData=
 [{
         inputPlaceholder:"What course are you taking?",
         inputType:"text",
+        id:0,
         dataType:"course",
         defaultValue:"",
     },
@@ -9,6 +10,7 @@ export const stepData=
         inputPlaceholder:"What year are you currently in?",
         inputType:"select",
         dataType:"year",
+        id:1,
         options:[
             {value:1,label:1},
             {value:2,label:2},
@@ -20,9 +22,10 @@ export const stepData=
         ],
         defaultValue:"",
     },
-{
-    inputPlaceholder:"What semester are you currently in?",
-    inputType:"select",
+    {
+        inputPlaceholder:"What semester are you currently in?",
+        inputType:"select",
+        id:2,
     options:[
     {value:1,label:1},
     {value:2,label:2},

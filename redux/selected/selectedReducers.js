@@ -1,10 +1,14 @@
-import { SELECT_COURSE, SELECT_SEMESTER, SELECT_YEAR } from "./selectedTypes";
+import { SELECT_COURSE, SELECT_SEMESTER, SELECT_YEAR,SET_SELECTED_UNIT, SET_SELECTED_UNIT_NOTES } from "./selectedTypes";
 const initialState={
     selectedCourse:null,
     selectedSemester:null,
     selectedYear:null,
+    selectedUnit:null,
+    selectedUnitNotes:{},
+
+
 }
-export default function selectedReducer(state=initialState,action){
+export function selectedReducer(state=initialState,action){
     switch (action.type){
         case SELECT_COURSE:
             return {
@@ -21,7 +25,18 @@ export default function selectedReducer(state=initialState,action){
                 ...state,
                 selectedYear:action.payload
             }
-        default:
-            return state
-    }
+        case SET_SELECTED_UNIT:
+            
+            return {
+                ...state,
+                selectedUnit:action.payload
+            }
+        case SET_SELECTED_UNIT_NOTES:
+            return {
+                ...state,
+                selectedUnitNotes:action.payload
+            }
+            default:
+                return state
+        }
 }

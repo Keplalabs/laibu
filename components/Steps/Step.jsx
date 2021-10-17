@@ -4,26 +4,24 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import BasicSelect from "./Select";
-import Search from "../searchBar/Search";
+import Search from "../search/Search";
 import styles from "./steps.module.css";
 
-function Step({ data, current }) {
-  const currentData = data[current];
+function Step({ data,source }) {
   const handleChange = (event) => {
     console.log(event.target.value);
   };
-  let {} = data;
   return (
     <div className={styles.stepContainer}>
-      {currentData.inputType === "select" && (
+      {data.inputType === "select" && (
         <BasicSelect
-          dataType={currentData.dataType}
-          options={currentData.options}
-          placeholder={currentData.inputPlaceholder}
+          dataType={data.dataType}
+          options={data.options}
+          placeholder={data.inputPlaceholder}
         />
       )}
-      {currentData.inputType === "text" && (
-        <Search placeholder={currentData.inputPlaceholder} />
+      {data.inputType === "text" && (
+        <Search  clear={true} source={source} placeholder={data.inputPlaceholder} />
       )}
     </div>
   );

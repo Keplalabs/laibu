@@ -23,15 +23,13 @@ const BasicSelect = ({ placeholder, dataType, options }) => {
         setSelected(selectedSemester)
     }
   }, [dataType,selectedYear,selectedSemester])
+  
   const select = (value) => {
-    console.log("dataType:", dataType);
     switch (dataType) {
       case "year":
-        console.log("selected year,datatype:",dataType);
         dispatch(selectYear(value));
         break
       case "semester":
-        console.log("selected semester,datatype:",dataType);
         dispatch(selectSemester(value));
         break
       default:
