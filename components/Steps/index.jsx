@@ -3,8 +3,8 @@ import Step from './Step'
 import { Header } from '../styledComponents/Header'
 import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useSelector,useDispatch } from 'react-redux';
-
-
+import {selectCourse} from '../../redux/selected/selectedActions'
+import ConfirmSelection from './ConfirmSelection';
 import { Button } from '@material-ui/core';
 import styles from './steps.module.css'
 import WithModal from '../Modal'
@@ -15,9 +15,19 @@ function RegistrationSteps({detailsToUpdate}) {
     const courses=useSelector(state=>state.data.courses)
     let [currentData,setCurrentData] = useState({})
     let [state,setCurrentState] = useState(0)
+    let [confirm,setConfirm] = useState(false)
     const { user } = useUser()
+    function handleCourseSelecton(course){
+        dispatch(selectCourse(course))
+        setCurrentState(state=>state+1)
+        console.log("course:",course)
+        
+        
+    }
     function handleFinish() {
         console.log('finished')
+        setCurrentState(state=>state+1)
+        setConfirm(true)
     }
 
     useEffect(()=>{
@@ -28,16 +38,21 @@ function RegistrationSteps({detailsToUpdate}) {
         <WithModal disableClose={true}>
             <div className={styles.stepsContainer}>
 
+                {
+                confirm && state==detailsToUpdate.length?<ConfirmSelection/>:(
+                    <>
             <h1 className={styles.stepsHeader}>Welcome {user ? Capitalize(user.nickname) : null}!</h1>
             <p className={styles.stepParagraph}>To offer you the most enjoyable experience we need some information from you</p>
-            {   
-                  <Step data={currentData} source={courses} />
-            }
+               <Step data={currentData} source={courses} callback={handleCourseSelecton} props={state,setCurrentState}/>
+                    </>
+               )}
+               
+            
             {/* sorry about tihs code,will try and do better here */}
             <div className={styles.stepButtons,state===0 ?styles.flexCenter:styles.flexBetween}>
                 {state >= 1 ? <Button variant="outlined" onClick={() => setCurrentState(state => state - 1)}>Back</Button> : null}
-                {state<detailsToUpdate.length-1?<Button variant="outlined"  onClick={() => setCurrentState(state => state + 1)}>Next</Button>:null}
-                {state == detailsToUpdate.length-1 ? <Button variant="contained" color="primary" onClick={handleFinish}>Finish</Button> : null}
+                {state<detailsToUpdate.length-1      ?<Button variant="outlined"  onClick={() => setCurrentState(state => state + 1)}>Next</Button>:null}
+                {state == detailsToUpdate.length ? <Button variant="contained" color="primary" onClick={handleFinish}>Finish</Button> : null}
             </div>
                   </div>
         </WithModal>

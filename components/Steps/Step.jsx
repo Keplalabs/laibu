@@ -7,7 +7,7 @@ import BasicSelect from "./Select";
 import Search from "../search/Search";
 import styles from "./steps.module.css";
 
-function Step({ data,source }) {
+function Step({ data,source,callback}) {
   const handleChange = (event) => {
     console.log(event.target.value);
   };
@@ -17,11 +17,11 @@ function Step({ data,source }) {
         <BasicSelect
           dataType={data.dataType}
           options={data.options}
-          placeholder={data.inputPlaceholder}
+          placeholder={data.inputPlaceholder} 
         />
       )}
       {data.inputType === "text" && (
-        <Search  clear={true} source={source} placeholder={data.inputPlaceholder} />
+        <Search  clear={true} source={source} callback={callback} placeholder={data.inputPlaceholder} />
       )}
     </div>
   );

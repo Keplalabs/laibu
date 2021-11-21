@@ -35,7 +35,9 @@ const Search = (props) => {
     console.log(searchTerm)
   };
   const handleClose = async (choice) => {
-    console.log(choice)
+    if(props.callback){
+      props.callback(choice)
+    }
 
     // let mutatedSelect;
     // if (props.location === "/add/videos") {
