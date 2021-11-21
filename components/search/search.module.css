@@ -9,7 +9,7 @@
 }
 .searchBar{
     width:100%;
-    margin-bottom:10px;
+    margin:10px 0;
     position: relative;
 }
 
@@ -25,14 +25,15 @@
 }
 .searchInput{
     width:100%;
-    border:1px inset silver;
+    border:none;
+    box-shadow:2px 2px 2px gray;
     border-radius: 30px;
+    background-color: #fff6;
     outline: none;
-    padding: 2px 5px;
-    font-size:16px;
+    padding: 10px;
+    font-size:14px;
+    text-align: center;
     text-transform: uppercase;
-
-    background: transparent;
 }
 .resultsContainer{
     width:100%;

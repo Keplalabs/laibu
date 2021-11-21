@@ -28,14 +28,26 @@
     justify-content: center;
     align-items: center;
 }
-.selectPlaceholder{
+.placeHolder{
     color:#191919;
+    text-align: center;
+    font-size: 1.5em;
+    /* margin:0.5rem; */
 }
 .selectOptions{
     display: flex;
     margin:1rem 0;
     justify-content: space-evenly;
     align-items: center;
+}
+.selectedCourse{
+    background-color:#0a831e ;
+    box-shadow:2px 2px 2px #0b691a;
+    border-radius: 30px;
+    text-align: center;
+    color:#fff;
+    padding:0.5em;
+    margin:1em 0;
 }
 .stepsHeader{
     font-size:36px;
@@ -50,7 +62,7 @@
     justify-content: space-evenly;
     /* color:#fff; */
     height:100%;
-background-color: #fff5;
+    background-color: #fff5;
     backdrop-filter: blur(0.7);
     align-items: center;
     flex-direction: column;
@@ -62,4 +74,23 @@ background-color: #fff5;
     justify-content: space-evenly;
     /* align-items: center; */
 
+}
+.confirmSelectionContainer{
+    width:100%;
+    text-align: center;
+}
+.confirmSelectionContainer p{
+    /* text-decoration: ; */
+     margin:0.2em 0;
+    border-bottom: 1px solid rgb(141, 141, 141);
+}
+.confirmSelectionContainer h3{
+    /* margin:0.2rem 0; */
+    font-size: 1.5em;
+    color:#0a831e;
+    text-transform: capitalize;
+}
+.confirmSelectionContainer h1{
+    text-transform: capitalize;
+    margin-bottom: 1rem;
 }

@@ -1,15 +1,17 @@
-import React, { useState,} from "react";
+import React, { useState,useEffect} from "react";
 import SearchBar from "./SearchBar.jsx";
 import Results from "./Results";
 // import { Searchcontext, SearchQuerycontext, Datacontext } from "../../context";
 import { useSearch } from "../../hooks/search";
 // import { fileSearch } from "../../helpers";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { setSelectedUnit } from "../../redux/selected/selectedActions.js";
 
 const Search = (props) => {
   let [ref,desc] = ["Enter Unit Code or Name", "name"]; //change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
   const [results, setResults] = useState([]);
+  const course=useSelector(state=>state.selected.selectedCourse)
+
   const dispatch =useDispatch()
   // const { setfilteredNotes } = useContext(SearchQuerycontext);
   // const { updateRecent } = useContext(Datacontext);
@@ -20,7 +22,9 @@ const Search = (props) => {
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
-
+  useEffect(()=>{
+    if(course && props.setFilled)props.setFilled(true)
+  },[course,props])
   const handleSubmit = async (e) => {
     e.preventDefault();
     //handle form submission for topic search in unit page
@@ -38,6 +42,11 @@ const Search = (props) => {
     if(props.callback){
       props.callback(choice)
     }
+    
+    if(props.setFilled){
+      props.setFilled(true)
+    }
+
 
     // let mutatedSelect;
     // if (props.location === "/add/videos") {
