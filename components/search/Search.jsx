@@ -6,7 +6,7 @@ import { useSearch } from "../../hooks/search";
 // import { fileSearch } from "../../helpers";
 import { useDispatch,useSelector } from "react-redux";
 import { setSelectedUnit } from "../../redux/selected/selectedActions.js";
-
+import styles from './search.module.css'
 const Search = (props) => {
   let [ref,desc] = ["Enter Unit Code or Name", "name"]; //change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
   const [results, setResults] = useState([]);
@@ -65,12 +65,12 @@ const Search = (props) => {
     }
   };
   return (
-    <>
+  <div className={styles.searchContainer}>
       <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, placeholder:props.placeholder }} />
       {results.length > 0 && searchTerm.length > 0 ? (
         <Results props={{ handleClose, setResults, results, ref, desc }} />
       ) : null}
-    </>
+    </div>
   );
 };
 

@@ -35,21 +35,21 @@ export function setCourseInfo(info) {
     }
 
 }
-export function setLoading(state) {
-    return {
-        type: SET_LOADING,
-        payload: state
+// export function setLoading(state) {
+//     return {
+//         type: SET_LOADING,
+//         payload: state
 
-    }
-}
+//     }
+// }
 //should be called after logging in
 export function fetchCourseInfo(user) {
     return dispatch => {
-        dispatch(setLoading(true))
+        // dispatch(setLoading(true))
         const currentSemesterUnits = getLocalData(CURRENT_SEMESTER_UNITS)
         if (currentSemesterUnits) {
             dispatch(setCurrentSemesterUnits(currentSemesterUnits))
-            dispatch(setLoading(false))
+            // dispatch(setLoading(false))
         }
         else {  
         let payload = {
@@ -60,11 +60,11 @@ export function fetchCourseInfo(user) {
         axios.post(api.routes.filterUnitsUrl, payload).then(res =>
         {
             dispatch(setCurentSemesterUnits(res.data.message))
-            dispatch(setLoading(false))
+            // dispatch(setLoading(false))
         }   
         ).catch(err => {
             dispatch(showAlert({ type:'error', message: err.message }))
-            dispatch(setLoading(false))
+            // dispatch(setLoading(false))
         })
 
         //todo:setup expiry as well in the future

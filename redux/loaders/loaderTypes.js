@@ -1,0 +1,2 @@
+export const SET_PAGE_LOADING='SET_PAGE_LOADING'
+export const SET_LOADING_BG='SET_LOADING_BG'

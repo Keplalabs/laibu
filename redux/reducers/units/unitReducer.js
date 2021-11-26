@@ -2,7 +2,7 @@ import { SET_COURSE_INFO, SET_CURRENT_SEMESTER, SET_CURRENT_YEAR,SET_SEMESTER_UN
 
 const initialState={
     courseInfo:{},
-    loading:false,
+    // loading:false,
     currentYear:null,
     currentSemester:null,
     currentSemesterUnits:{},
