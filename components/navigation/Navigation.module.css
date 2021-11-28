@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   font-family: "Cagliostro", sans-serif;
-  color: #fff;
+  color: #191919;
 }
 .navList {
   list-style-type: none;
@@ -43,7 +43,7 @@
 }
 .signInButton {
   background-color: #77059f;
-  /* color: #fff; */
+  color: #fff;
   padding: 5px 15px;
   transition: all 0.3s ease-in-out;
   border-radius: 30px;

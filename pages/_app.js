@@ -8,6 +8,7 @@ import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 import Alert from '../components/Alert';
 import Loader from '../components/loaders/Loader';
+import Background from '../components/background/Background'
 const theme = {
   colors: {
     color: '#191919',
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
         <UserProvider >
         <Loader/>
           <Navigation />
+          <Background/>
           <Alert/>
           {/* <Landing/> */}
           <Component {...pageProps} />

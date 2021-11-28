@@ -18,6 +18,9 @@ const Landing = () => {
       dispatch(getData(UNITS));
       dispatch(setLoading(false))
     }
+    return ()=>{
+      dispatch(setLoading(false))
+    }
   }, [dispatch, units]);
   return (
     <div className={styles.firstSight}>
@@ -28,7 +31,7 @@ const Landing = () => {
       <div className={styles.rightSection}>
         <div className={styles.tagContainer}>
           <h1 className={styles.tagHeader}>
-            Welcome to <LandingHeader>Laibu</LandingHeader>
+            <LandingHeader>Laibu</LandingHeader>,Your personal campus library
           </h1>
           <p className={styles.tagLine}>
             A place where you can access all your course notes and more{" "}
