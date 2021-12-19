@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetails } from "../../redux/user/userActions";
@@ -13,8 +13,11 @@ import { setBackground } from "../../redux/background";
 import blurredBgImage from '../../public/images/bg/bgblurred.png'
 import dashboardBgImage from '../../public/images/bg/dashboardbg.png'
 function Dashboard() {
+  let [bgType,setBgType]=useState(bgTypes.image)
+  let [bgImageUrl,setBgImageUrl]=useState(blurredBgImage)
   const { user } = useUser();
   const userInfo = useSelector((state) => state.userInfo);
+  const modalIsVisible = useSelector((state) => state.modal.isVisible);
   const dispatch = useDispatch();
   const { loading, detailsToUpdate, role, course, year, semester } = userInfo;
   const courses = useSelector((state) => state.data.courses);
@@ -23,10 +26,11 @@ function Dashboard() {
 
   // useEffect(() => {
     // }, [dispatch, user]);
+    //fetch and populate data
   useEffect(() => {
     const bgStyle={
-      bgType:bgTypes.image,
-      imageUrl:showModal?blurredBgImage.src:dashboardBgImage.src,
+      bgType,
+      imageUrl:modalIsVisible?blurredBgImage.src:dashboardBgImage.src,
     }
     dispatch(setBackground(bgStyle))
     if (user) {
@@ -40,10 +44,12 @@ function Dashboard() {
       dispatch(getData(UNITS));
     }
     dispatch(setLoading(false))
+    return ()=>dispatch(setBackground)
 
-  }, [courses, user, units, dispatch,]);
+  }, [courses, user, units, dispatch, bgType, modalIsVisible]);
   
 
+  //control registration steps visiblity
   useEffect(() => {
     if (detailsToUpdate.length > 0) {
       dispatch(showModal());
@@ -57,16 +63,16 @@ function Dashboard() {
     <div>
       {!loading ? (
         <div>
-          <RegistrationSteps
-            detailsToUpdate={detailsToUpdate}
-          />
+        {/* registrationsteps visiblity is controlled by the modal state,no need to conditionally render it,it will be visible if required  */}
+          <RegistrationSteps detailsToUpdate={detailsToUpdate}/>
         </div>
       ) : (
         <Skeleton count={3} />
-      )}
+      )
+     }
     </div>
   );
 }
 
 export default Dashboard;
-export const getServerSideProps = withPageAuthRequired();
+// export const getServerSideProps = withPageAuthRequired();

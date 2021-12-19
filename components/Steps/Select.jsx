@@ -53,7 +53,7 @@ const BasicSelect = ({ placeholder, dataType, options,setFilled }) => {
       <ul className={styles.selectOptions}>
         {options.map((opt, i) =>
           opt.value === selected ? (
-            <SelectedButton>{opt.label}</SelectedButton>
+            <SelectedButton key={i}>{opt.label}</SelectedButton>
           ) : (
             <OptionButton
               onClick={() => select(opt.value)}

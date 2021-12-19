@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { bgTypes } from '../../utils/constants';
 
 function Background({}) {
-    let [activeBackground,setActiveBackground]=useState()
+    let [activeBackground,setActiveBackground]=useState({})
     let backgroundImageUrl=useSelector(state=>state.background.imageUrl)
     let bgColor=useSelector(state=>state.background.bgColor)
     let gradientColor1=useSelector(state=>state.background.gradientColor1)
@@ -48,10 +48,11 @@ function Background({}) {
                 setActiveBackground(backgroundStyles.colorBg)
             }
         return ()=>{
-
+            setActiveBackground({})
         }
 
-    },[backgroundStyles.colorBg, backgroundStyles.gradientBg, backgroundStyles.imageBg, backgroundType])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[backgroundType])
    
     
     return (

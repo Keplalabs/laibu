@@ -8,18 +8,18 @@ function ConfirmSelection() {
     return (
         <div className={styles.confirmSelectionContainer}>
             <h1>Confirm details</h1>
-            <p>Course 
+            <div>Course 
             <h3>{course.name}</h3>
             <br/>
-             </p>
-            <p>Current Year
+             </div>
+            <div>Current Year
             <h3>{year}</h3>
             <br/>
-             </p>
-            <p>Current Semester 
+             </div>
+            <div>Current Semester 
             <h3>{semester}</h3>
             <br/>
-             </p>
+             </div>
         </div>
     )
 }

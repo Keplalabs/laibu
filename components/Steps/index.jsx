@@ -43,6 +43,7 @@ function RegistrationSteps({detailsToUpdate}) {
     console.log(currentStep)
     setCurrentData(currentStep[0])
 },[state])
+
     return (
         <WithModal disableClose={true}>
             <div className={styles.stepsContainer}>

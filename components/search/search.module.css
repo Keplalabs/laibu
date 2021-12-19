@@ -28,7 +28,7 @@
 .searchInput{
     width:100%;
     border:none;
-    box-shadow:-2px 2px 2px rgb(192, 192, 192);
+    box-shadow:-2px 2px 2px rgb(144, 144, 144);
     border-radius: 30px;
     background-color: #fff;
     outline: none;
@@ -63,6 +63,7 @@
     100% {
         box-shadow: 0 0 1000px 8000px rgba(8, 8, 8, 0.596);
         opacity: 1;
+        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -95,6 +96,9 @@
     display:flex;
     flex-direction: column;
 
+}
+.singleResult{
+    font-weight: bold;
 }
 .resultsList li{
     width:100%;
