@@ -1,17 +1,16 @@
 import React from "react";
 import Link from "next/link";
 // reactstrap components
-import { Image } from 'next/image';
+import Image from 'next/image';
+import styles from './Navigation.module.css'
+import userIcon from '../../public/icons/userIcon.png'
+import Search from '../searchBar/Search';
 import {
   DropdownMenu,
   DropdownItem,
   UncontrolledDropdown,
   DropdownToggle,
-  Form,
-  FormGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Input,
+  NavItem,
   InputGroup,
   Navbar,
   Nav,
@@ -19,48 +18,40 @@ import {
   Media,
 } from "reactstrap";
 
-function DashNavbar({ brandText,user }) {
+function DashNavbar({brand,user=null }) {
+
   return (
     <>
-      <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
-        {/* <Container fluid>
-          <Link href="/admin/dashboard">
-            <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-              {brandText}
-            </a>
-          </Link>
-          <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-            <FormGroup className="mb-0">
-              <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fas fa-search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input placeholder="Search" type="text" />
-              </InputGroup>
-            </FormGroup>
-          </Form>
-          <Nav className="align-items-center d-none d-md-flex" navbar>
-            <UncontrolledDropdown nav>
+      <Container fluid>
+     <div className={styles.navBar}>
+              <Link href='/' passHref>
+                <a className={styles.logo}>LAIBU</a>
+            </Link>
+        <div className={styles.searchContainer}>
+          <Search/>
+        </div>
+          <Nav className="align-items-center d-none d-md-flex " navbar>
+            <UncontrolledDropdown nav >
               <DropdownToggle className="pr-0" nav>
                 {user &&
-                    <Media className="align-items-center">
+                  <Media className="d-flex flex-column align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
                     <Image
                       alt="..."
-                      src={require(user.image)}
+                      src={user.picture?user.picture:userIcon}
+                      width={'30px'}
+                      height={'30px'}
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
                     <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
+                      {user.nickname}
                     </span>
                   </Media>
                 </Media>
                   }
               </DropdownToggle>
-              <DropdownMenu className="dropdown-menu-arrow" right>
+              <DropdownMenu className="dropdown-menu-arrow" en>
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Welcome!</h6>
                 </DropdownItem>
@@ -95,9 +86,9 @@ function DashNavbar({ brandText,user }) {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-          </Nav>
-        </Container> */}
-      </Navbar>
+          </Nav> 
+      </div>
+        </Container> 
     </>
   );
 }

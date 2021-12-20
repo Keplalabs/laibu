@@ -6,6 +6,12 @@
   font-family: "Cagliostro", sans-serif;
   color: #fff;
 }
+.navBar a{
+  text-decoration: none;
+}
+.searchContainer{
+  min-width:400px;
+}
 .navList {
   list-style-type: none;
   display: flex;

@@ -3,7 +3,7 @@ import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserDetails } from "../../redux/user/userActions";
 import { fetchCourseInfo } from "../../redux/reducers/units/unitActions";
-import DashNavbar from "../../components/dashboard/DashNavbar";
+import DashNavbar from "../../components/navigation/DashNavbar";
 import { Skeleton } from "react-loading-skeleton";
 import Main from "../../components/dashboard/Main";
 function Dashboard() {
@@ -28,7 +28,6 @@ function Dashboard() {
   }, [dispatch, user]);
   return (
     <div>
-      {/* <DashNavbar brandText={"Laibu"} user={user}/> */}
       {!loading ? <div>
       <Main/>
       </div> : <Skeleton />}

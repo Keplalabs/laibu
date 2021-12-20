@@ -7,6 +7,7 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 import Alert from '../components/Alert';
+import 'bootstrap/dist/css/bootstrap.min.css';
 const theme = {
   colors: {
     color: '#191919',
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <UserProvider >
-          <Navigation />
+        <Navigation/>
           <Alert/>
           {/* <Landing/> */}
           <Component {...pageProps} />
