@@ -1,15 +1,13 @@
-import { SET_USER_TOKEN, SHOULD_UPDATE_COURSE, SHOULD_UPDATE_SEMESTER, SHOULD_UPDATE_YEAR, USER_DETAILS } from "./userTypes";
+import { DETAILS_TO_UPDATE, SET_USER_TOKEN, USER_DETAILS } from "./userTypes";
 
 const initialState={
-    course:{},
+    course:null,
     year:null,
     semester:null,
     role:4,
     token:null,
-    shouldUpdateCourse:false,
-    shouldUpdateSemester:false,
-    shouldUpdateYear:false,
     loading:false,
+    detailsToUpdate:[],
 }
 
 export function userReducer(state=initialState,action){
@@ -25,21 +23,12 @@ export function userReducer(state=initialState,action){
                 ...state,
                 ...action.payload
             }
-            case SHOULD_UPDATE_COURSE:
-                return{
-                    ...state,
-                    shouldUpdateCourse:action.payload
-                }
-                case SHOULD_UPDATE_SEMESTER:
-                    return {
-                        ...state,
-                        shouldUpdateSemester:action.payload
-                    }
-                    case SHOULD_UPDATE_YEAR:
-                        return {
+        case DETAILS_TO_UPDATE:
+            return {
                 ...state,
-                shouldUpdateYear:action.payload
+                detailsToUpdate:action.payload
             }
+         
         default:
             return state
     }

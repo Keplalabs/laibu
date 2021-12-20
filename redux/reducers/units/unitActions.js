@@ -1,9 +1,9 @@
 import axios from "axios"
 import { api } from "../../../utils/urls"
 import { getLocalData, setLocalData } from "../../../utils/helpers"
-import { showAlert } from "../../alert"
-import { SET_RECENT_UNITS, SET_UNIT_NOTES, SET_COURSE_INFO, SET_SEMESTER_UNITS,SET_CURRENT_YEAR, SET_CURRENT_SEMESTER, SET_SELECTED_UNIT, SET_LOADING } from "./unitTypes"
-const recentDb = 'recentUnits'
+import { showAlert } from "../../actions"
+import {CURRENT_SEMESTER_UNITS, RECENT} from '../../../utils/constants'
+import { SET_UNIT_NOTES, SET_COURSE_INFO, SET_SEMESTER_UNITS,SET_CURRENT_YEAR, SET_CURRENT_SEMESTER,SET_LOADING } from "./unitTypes"
 export function setCurentSemesterUnits(data) {
     return {
         type: SET_SEMESTER_UNITS,
@@ -11,12 +11,6 @@ export function setCurentSemesterUnits(data) {
     }
 }
 
-export function setUnitNotes(data) {
-    return {
-        type: SET_UNIT_NOTES,
-        payload: data
-    }
-}
 export function setYear(year) {
     return {
         type: SET_CURRENT_YEAR,
@@ -32,21 +26,8 @@ export function setSemester(semester) {
     }
 
 }
-export function setSelectedUnit(unitCode) {
-    return {
-        type: SET_SELECTED_UNIT,
-        payload: unitCode
-    }
 
-}
 
-export function setRecentUnits(recent) {
-    return {
-        type: SET_RECENT_UNITS,
-        payload: recent
-    }
-
-}
 export function setCourseInfo(info) {
     return {
         type: SET_COURSE_INFO,
@@ -54,24 +35,21 @@ export function setCourseInfo(info) {
     }
 
 }
-export function setLoading(state) {
-    return {
-        type: SET_LOADING,
-        payload: state
+// export function setLoading(state) {
+//     return {
+//         type: SET_LOADING,
+//         payload: state
 
-    }
-}
+//     }
+// }
 //should be called after logging in
 export function fetchCourseInfo(user) {
     return dispatch => {
-        dispatch(setLoading(true))
-        const currentSemesterUnits = getLocalData('semester')
+        // dispatch(setLoading(true))
+        const currentSemesterUnits = getLocalData(CURRENT_SEMESTER_UNITS)
         if (currentSemesterUnits) {
-            dispatch(setCourseInfo(courseInfo))
-            dispatch(setYear(courseInfo.currentYear))
-            dispatch(setSemester(courseInfo.currentSemester))
-            dispatch(fetchCurrentSemesterUnits(courseInfo))
-            dispatch(setLoading(false))
+            dispatch(setCurrentSemesterUnits(currentSemesterUnits))
+            // dispatch(setLoading(false))
         }
         else {  
         let payload = {
@@ -82,10 +60,11 @@ export function fetchCourseInfo(user) {
         axios.post(api.routes.filterUnitsUrl, payload).then(res =>
         {
             dispatch(setCurentSemesterUnits(res.data.message))
-            dispatch(setLoading(false))
+            // dispatch(setLoading(false))
         }   
         ).catch(err => {
             dispatch(showAlert({ type:'error', message: err.message }))
+            // dispatch(setLoading(false))
         })
 
         //todo:setup expiry as well in the future
@@ -97,13 +76,12 @@ export function fetchCourseInfo(user) {
     }
 }
 
-//should be called after fetching course info
 
 //should be called when a new unit is selected/when select unit is called
-//the recentDb is an object of objects instead of a list to prevent unit duplication in local storage
+//RECENT is an object of objects instead of a list to prevent unit duplication in local storage
 export function updateRecentUnits(unit) {
     let updatedRecentUnits = {}
-    const recentUnits = localStorage.getItem(recentDb)
+    const recentUnits = localStorage.getItem(RECENT)
     if (recentUnits) {
         updatedRecentUnits = {
             ...recentUnits,
@@ -114,6 +92,6 @@ export function updateRecentUnits(unit) {
         updatedRecentUnits = { unit }
     }
     dispatch(setRecentUnits(updatedRecentUnits))
-    localStorage.setItem(recentDb, updateRecentUnits)
+    setLocalData(RECENT, updatedRecentUnits,720)
 }
 

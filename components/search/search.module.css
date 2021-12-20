@@ -1,0 +1,114 @@
+/* search bar */
+.searchContainer{
+    position: relative;
+    margin: 0 auto;
+    color: inherit;
+    width:100%;
+    min-width: 70%;
+    transition: all 0.2s ease-in-out;
+
+
+}
+.searchBar{
+    width:100%;
+    margin:10px 0;
+    position: relative;
+}
+
+.fa-search{
+    position:absolute;
+    right:10px;
+    cursor:pointer;
+    bottom:10px;
+    transition:0.3s ease-in-out
+}
+.fa-search:hover{
+    color:darkblue;
+}
+.searchInput{
+    width:100%;
+    border:none;
+    box-shadow:-2px 2px 2px rgb(144, 144, 144);
+    border-radius: 30px;
+    background-color: #fff;
+    outline: none;
+    padding: 10px;
+    font-size:14px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.resultsContainer{
+    width: 100%;
+    z-index: 5;
+    opacity: 0;
+    box-shadow: 0 0 1000px 8000px rgba(8, 8, 8, 0.596);
+    max-height: 50vh;
+    animation: slidein 0.6s forwards ease-in-out;
+    border-radius: 2px;
+    overflow-y: auto;
+    transform: translateY(20px);
+    position: absolute;
+}
+
+
+@keyframes slidein {
+    0% {
+        box-shadow: 0 0 1000px 8000px rgba(15, 15, 15, 0.596);
+        opacity: 0.2;
+    }
+    50% {
+        box-shadow: 0 0 1000px 8000px rgba(15, 15, 15, 0.596);
+        opacity: 0.7;
+    }
+    100% {
+        box-shadow: 0 0 1000px 8000px rgba(8, 8, 8, 0.596);
+        opacity: 1;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.resultsList {
+    width:100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+    align-content: center;
+    text-align: center;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    color:inherit;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+
+
+}.open-search{
+    opacity:1;
+    transition:0.2s ease-in-out;
+}
+.close-search{
+    opacity:0;
+    pointer-events:none;
+}
+.singleResult{
+    display:flex;
+    flex-direction: column;
+
+}
+.singleResult{
+    font-weight: bold;
+}
+.resultsList li{
+    width:100%;
+    border-bottom:1px solid rgb(212, 212, 208);
+
+    font-family: sans-serif;
+    font-size:12px;
+}
+
+.button-text {
+    font-family: sans-serif, Courier, monospace;
+    font-weight: 700;
+}
