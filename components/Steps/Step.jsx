@@ -12,7 +12,6 @@ import { Button } from '../styledComponents/Buttons';
 function Step({ data={},source,callback,setFilled}) {
   const course=useSelector(state=>state.selected.selectedCourse)
   const handleChange = (event) => {
-    console.log(event.target.value);
   };
 
   return (

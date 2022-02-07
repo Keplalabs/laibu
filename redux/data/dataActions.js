@@ -65,7 +65,6 @@ export function getData(type) {
         }
     const data = getLocalData(type);
     if (data) {
-        console.log('data from local:',data)
       dispatch(setData(type, data));
       return
     }

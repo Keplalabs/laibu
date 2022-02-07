@@ -29,11 +29,11 @@ const Landing = () => {
       </div>
 
       <div className={styles.rightSection}>
-        <div className={styles.tagContainer}>
-          <h1 className={styles.tagHeader}>
-            <LandingHeader>Laibu</LandingHeader>,Your personal campus library
+        <div className="flex items-center flex-col">
+          <h1 className="text-5xl font-bold">
+            <LandingHeader>Laibu</LandingHeader>
           </h1>
-          <p className={styles.tagLine}>
+          <p className="text-center text-2xl text-slate-700">
             A place where you can access all your course notes and more{" "}
           </p>
           <Search source={units} placeholder="Search Unit code or Name" />

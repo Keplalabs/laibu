@@ -10,7 +10,7 @@ export const Header = styled.h1`
 export const LandingHeader = styled.span`
     font-weight:bold;
     text-align: center;
-    font-size:2.5rem;
+    font-size3rem;
     font-family: 'Cagliostro',sans-serif;
     color:#77059F;
     @media (max-width: 600px) {

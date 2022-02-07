@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 9999;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   max-width: 450px;
   position: relative;
 background-color:#fff5 ;
-  height: 400px;
+  /* height: 400px; */
   
   overflow:auto;
   margin: 0 20px;

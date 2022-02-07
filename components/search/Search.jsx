@@ -66,7 +66,7 @@ const Search = (props) => {
   };
   return (
   <div className={styles.searchContainer}>
-      <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, placeholder:props.placeholder }} />
+      <SearchBar focus={props.focus} form={{ handleSearch, searchTerm, handleSubmit, placeholder:props.placeholder?props.placeholder:"Search" }} />
       {results.length > 0 && searchTerm.length > 0 ? (
         <Results props={{ handleClose, setResults, results, ref, desc }} />
       ) : null}

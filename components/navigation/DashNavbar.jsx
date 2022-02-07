@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from 'next/image';
 import styles from './Navigation.module.css'
 import userIcon from '../../public/icons/userIcon.png'
-import Search from '../searchBar/Search';
+import Search from '../search/Search';
 import {
   DropdownMenu,
   DropdownItem,
@@ -51,7 +51,7 @@ function DashNavbar({brand,user=null }) {
                 </Media>
                   }
               </DropdownToggle>
-              <DropdownMenu className="dropdown-menu-arrow" en>
+              <DropdownMenu className="dropdown-menu-arrow" end>
                 <DropdownItem className="noti-title" header tag="div">
                   <h6 className="text-overflow m-0">Welcome!</h6>
                 </DropdownItem>

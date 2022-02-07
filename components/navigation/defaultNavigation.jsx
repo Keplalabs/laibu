@@ -6,21 +6,19 @@ function DefaultNavigation() {
     return (
      <div className={styles.navBar}>
             <Link href='/' passHref>
-                <a className={styles.logo} >LAIBU</a>
+                <a className={styles.logo} >Laibu</a>
             </Link>
             <div className={styles.navList} >
-                <ul className={styles.navLinks}>
-                    <li className={styles.navLink}>
+                <ul className="text-purple-800 flex flex-row p-2 items-center">
+                    <li>
                         <Link href='/about'><a>About</a></Link>
-                    </li >
-                        <li className={styles.signInButton}>
+                    </li>
+                        <li>
                             <a onClick={(e) => { e.preventDefault(); window.location.replace('/api/auth/login') }} >
                                 Login
                             </a>
                         </li>
-                    <li className={styles.navLink}>
-                        <Link href='/user/account'><a>Account</a></Link>
-                    </li>
+            
                 </ul>
             </div>
         </div>)

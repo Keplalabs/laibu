@@ -31,7 +31,6 @@ function RegistrationSteps({detailsToUpdate}) {
         setConfirm(true)
     }
     function handleClickNext() {
-        console.log('finished')
         if(state==detailsToUpdate.length-1)
         setConfirm(true)
         setCurrentState(state => state + 1)
@@ -40,7 +39,6 @@ function RegistrationSteps({detailsToUpdate}) {
     }
     useEffect(()=>{
     const currentStep=stepData.filter(item=>item.id===state)
-    console.log(currentStep)
     setCurrentData(currentStep[0])
 },[state])
 
@@ -51,7 +49,7 @@ function RegistrationSteps({detailsToUpdate}) {
                 {
                 confirm && state==detailsToUpdate.length?<ConfirmSelection/>:(
                     <>
-            <h1 className={styles.stepsHeader}>Welcome {user ? Capitalize(user.nickname) : null}!</h1>
+            <h1 className="text-3xl font-bold">Welcome {user ? Capitalize(user.nickname) : null}!</h1>
             <p className={styles.stepParagraph}>To offer you the most enjoyable experience we need some information from you</p>
                <Step data={currentData} setFilled={setFilled} source={courses} callback={handleCourseSelecton} props={state,setCurrentState}/>
                     </>

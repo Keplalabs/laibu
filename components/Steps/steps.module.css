@@ -43,33 +43,35 @@
 .selectedCourse{
     background-color:#0a831e ;
     box-shadow:2px 2px 2px #0b691a;
-    border-radius: 30px;
+    border-radius: 25px;
     text-align: center;
     color:#fff;
-    padding:0.5em;
+    padding:0.2em 0.5em ;
     margin:1em 0;
 }
 .stepsHeader{
-    font-size:36px;
+    font-size:2.2em;
+    text-align: center;
 }
 .selected{
     border:2px solid greenyellow;
 }
 .stepsContainer{
-    padding:2rem;
+    padding:1.5em;
     display: flex;
     font-family: 'Cagliostro',sans-serif;
     justify-content: space-evenly;
     /* color:#fff; */
-    height:100%;
+    width:100%;
     background-color: #fff8;
     backdrop-filter: blur(0.7);
     align-items: center;
     flex-direction: column;
 }
 .stepContainer{
-    width:100%;
+    /* width:100%; */
     display:flex;
+    height:100%;
     flex-direction:column ;
     justify-content: space-evenly;
     /* align-items: center; */

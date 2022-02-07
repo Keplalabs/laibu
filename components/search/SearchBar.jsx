@@ -17,7 +17,7 @@ const SearchBar = props => {
         autoComplete='off'
         ref={inputbox}
         autoFocus={props.focus}
-        className={styles.searchInput}
+        className="shadow rounded-lg p-2 font-mono w-full"
         onChange={handleSearch}
         value={searchTerm}
         // autoFocus
