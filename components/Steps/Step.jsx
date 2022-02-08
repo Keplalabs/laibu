@@ -26,7 +26,7 @@ function Step({ data={},source,callback,setFilled}) {
       )}
       {data.inputType === "text" && (
         <>
-        <h4 className={styles.placeHolder}>{data.inputPlaceholder}</h4>
+        <h4 className="text-slate-00 text-2xl">{data.inputPlaceholder}</h4>
         {course&&<h3 className={styles.selectedCourse}>{course.name}</h3>}
         <Search  setFilled={setFilled} clear={true} source={source} callback={callback} placeholder='Course?' /> 
         </>

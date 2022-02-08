@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './Navigation.module.css'
 import userIcon from '../../public/icons/userIcon.png'
 import Search from '../search/Search';
+import { signOut } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownItem,
@@ -35,7 +36,8 @@ function DashNavbar({brand,user=null }) {
               <DropdownToggle className="pr-0" nav>
                 {user &&
                   <Media className="d-flex flex-column align-items-center">
-                  <span className="avatar avatar-sm rounded-circle">
+                  <span className="avata
+        setConfirm(true)r avatar-sm rounded-circle">
                     <Image
                       alt="..."
                       src={user.picture?user.picture:userIcon}
@@ -82,7 +84,7 @@ function DashNavbar({brand,user=null }) {
                 <DropdownItem divider />
                 <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
                   <i className="ni ni-user-run" />
-                  <span>Logout</span>
+                  <span onClick={()=>signOut()}>Logout</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>

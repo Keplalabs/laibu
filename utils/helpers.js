@@ -1,7 +1,13 @@
 import axios from "axios";
 import { api } from "./urls";
-import { COURSES, RECENT, UNITS } from "./constants";
-
+import {
+  COURSES,
+  FACULTY_EMAIL,
+  RECENT,
+  Status,
+  STUDENT_EMAIL,
+  UNITS,
+} from "./constants";
 
 //try catch block to catch invalid regexp characters that user types
 export const fileSearch = async (query, notes) => {
@@ -19,6 +25,15 @@ export const fileSearch = async (query, notes) => {
     }
     return false;
   }
+};
+export const assignStatus = (email) => {
+  let status;
+  if (email.endsWith(STUDENT_EMAIL)) {
+    status = Status.STUDENT;
+  } else if (email.endsWith(FACULTY_EMAIL)) {
+    status = Status.FACULTY;
+  }
+  return status;
 };
 // export const refreshTokenSetup = (res) => {
 //   // Timing to renew access token
@@ -48,11 +63,10 @@ export const Search = (term, data, category) => {
       item[defaultcategory].toLowerCase().match(term.toLowerCase())
     );
 
-    console.log("results",[...res1, ...res2]);
+    console.log("results", [...res1, ...res2]);
     return [...res1, ...res2];
-
-  } catch(err) {
-    console.log(err)
+  } catch (err) {
+    console.log(err);
     return [];
   }
 };
@@ -123,11 +137,11 @@ export const setLocalData = (key, value, ttl = 72) => {
   switch (key) {
     case RECENT:
       item = {
-        data:value,
+        data: value,
       };
     default:
       item = {
-        data:value,
+        data: value,
         expiry: ttl ? now.getTime() + ttl * 3600 * 1000 : null,
       };
   }

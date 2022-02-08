@@ -15,11 +15,15 @@ model User {
 
   email   String   @unique
 
-  name    String?
+  name    String
   
-  year    Int
+  year    Int?
 
-  semester  Int
+  course String?
+
+  status String?
+
+  semester  Int?
 
   registeredUnits String[]
   

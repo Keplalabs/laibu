@@ -2,11 +2,11 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Landing from '../components/landingPage/Landing'
-import { getSession, useUser, } from '@auth0/nextjs-auth0'
+import { getSession, useSession} from 'next-auth/react'
 
 
 export default function Home() {
-  const { user, error, isLoading } = useUser()
+  // const { user, error, isLoading } = useUser()
 
   return (
     <div className={styles.container}>
@@ -27,7 +27,7 @@ export default function Home() {
 }
 export const getServerSideProps = async (context) => {
   const { req, res,props } = context
-  const session = await getSession(req, res)
+  const session = await getSession({req})
   if (session) {
     return {
       redirect: {

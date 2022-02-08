@@ -4,7 +4,7 @@ const initialState={
     course:null,
     year:null,
     semester:null,
-    role:4,
+    status:null,
     token:null,
     loading:false,
     detailsToUpdate:[],
