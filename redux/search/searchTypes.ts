@@ -1,0 +1,6 @@
+export const SELECT_FILE:string='SELECT_FILE'
+export const SEARCH_RESULTS:string='UPDATE_SEARCH_RESULTS'
+export const SEARCH_FILES:string='SEARCH'
+export const SET_SELECTED_UNIT:string='SET_SELECTED_UNIT'
+export const SET_SEARCH_HISTORY:string='SET_SEARCH_HISTORY'
+export const SET_ACTIVE_UNIT_CODE:string='SET_ACTIVE_UNIT_CODE'

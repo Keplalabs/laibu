@@ -5,10 +5,18 @@
 html,
 body {
     padding: 0;
+    width:100vw;
+    min-height:100vh;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      /* background: linear-gradient(to right, #00b4db, #0083b0); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  /* background-color: #E0FBFF */
+    /* background: linear-gradient(to right, #00b4db, #0083b0); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* background-color: #E0FBFF */
+  }
+  body{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+
 }
 a {
     color: inherit;
@@ -25,4 +33,21 @@ padding:0;
 }
 .link{
   color:#393D9C;
+}
+.notes-list{
+max-height:400px;
+}
+@media screen and (min-height:900px){
+  .notes-list{
+    max-height:550px;
+    overflow:auto;
+  }
+  
+}
+@media screen and (min-height:600px){
+  .notes-list{
+    max-height:400px;
+    overflow:auto;
+  }
+  
 }

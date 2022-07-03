@@ -24,13 +24,7 @@ export function selectedReducer(state=initialState,action){
             return {
                 ...state,
                 selectedYear:action.payload
-            }
-        case SET_SELECTED_UNIT:
-            
-            return {
-                ...state,
-                selectedUnit:action.payload
-            }
+            } 
         case SET_SELECTED_UNIT_NOTES:
             return {
                 ...state,

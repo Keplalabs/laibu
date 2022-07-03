@@ -13,7 +13,6 @@ const Landing = () => {
   const dispatch = useDispatch();
   const units = useSelector((state) => state.data.units);
   useEffect(() => {
-    console.log(units);
     if (units.length == 0) {
       dispatch(getData(UNITS));
       dispatch(setLoading(false))

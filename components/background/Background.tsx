@@ -2,13 +2,14 @@ import React,{useState,useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import { bgTypes } from '../../utils/constants';
 
-function Background({}) {
+type Props={
+    bgType:string,
+    bgImgUrl:string,
+    bgColor:string,
+}
+function Background({bgType,bgImgUrl='',bgColor='#fff'}:Props) {
     let [activeBackground,setActiveBackground]=useState({})
-    let backgroundImageUrl=useSelector(state=>state.background.imageUrl)
-    let bgColor=useSelector(state=>state.background.bgColor)
-    let gradientColor1=useSelector(state=>state.background.gradientColor1)
-    let gradientColor2=useSelector(state=>state.background.gradientColor2)
-    let backgroundType=useSelector(state=>state.background.bgType)
+    console.log(bgImgUrl)
     
     const backgroundStyles={
         base:{
@@ -20,26 +21,21 @@ function Background({}) {
         width:"100%",
         height:"100%",
         },
-        gradientBg:{
-            linearGradient:`45deg ${gradientColor1} ${gradientColor2}`
-        },
+      
         colorBg:{
             backgroundColor:bgColor
         },
         imageBg:{
-            backgroundImage:`url(${backgroundImageUrl})`,
             backgroundRepeat:"no-repeat",
             backgroundPosition:"center",
-            backgroundSize:"cover"
+            backgroundSize:"contain",
+            
         },
     }
     useEffect(()=>{
-        switch(backgroundType){
+        switch(bgType){
             case bgTypes.image:
                 setActiveBackground(backgroundStyles.imageBg)
-                break
-            case bgTypes.gradient:
-                setActiveBackground(backgroundStyles.gradientBg)
                 break
             case bgTypes.color:
                 setActiveBackground(backgroundStyles.colorBg)
@@ -52,12 +48,12 @@ function Background({}) {
         }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[backgroundType])
+    },[bgType])
    
     
     return (
-        <div style={{...backgroundStyles.base,...activeBackground}}>
-            
+        // <div style={{...backgroundStyles.base,...activeBackground}}>
+        <div className={`absolute w-full min-h-screen top-0 left-0 ${bgType==bgTypes.image?``:""} ${bgType==bgTypes.color&&`bg-${bgColor}-500`}`} >
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { SELECT_COURSE, SELECT_SEMESTER, SELECT_YEAR,SET_SELECTED_UNIT } from "./selectedTypes"
+import { SELECT_COURSE, SELECT_SEMESTER, SELECT_YEAR, } from "./selectedTypes"
 
 export function selectCourse(course){
     return {
@@ -18,13 +18,6 @@ export function selectYear(year){
     return {
         type:SELECT_YEAR,
         payload:year
-    }
-
-}
-export function setSelectedUnit(unitCode) {
-    return {
-        type: SET_SELECTED_UNIT,
-        payload: unitCode
     }
 
 }

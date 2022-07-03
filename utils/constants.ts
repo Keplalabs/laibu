@@ -1,5 +1,15 @@
 export const COURSES='courses'
 export const UNITS='units'
+export const NOTES='notes'
+export const ASSIGNMENTS='assignments'
+export const VIDEOS='videos'
+export const ACTIVE_UNIT="activeUnit"
+export const Categories = [
+  { label: NOTES, category: 'document' },
+  { label: ASSIGNMENTS, category: 'assignment' },
+  { label: VIDEOS, category: 'video' }
+]
+
 export const RECENT='recent'
 export const CURRENT_SEMESTER_UNITS='currentSemesterUnits'
 export const RECENT_FILES='RECENT_FILES'

@@ -8,7 +8,6 @@ import styles from "./steps.module.css";
 import WithModal from "../Modal";
 import { stepData } from "./data";
 import { showModal, hideModal } from "../../redux/modal/modalActions";
-import { Capitalize } from "../../utils/helpers";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { setLoading } from "../../redux/loaders/loaderActions";
@@ -16,7 +15,7 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.data.courses);
   let [currentData, setCurrentData] = useState({});
-  let [filled, setFilled] = useState(false);
+  let [filled, setFilled] = useState(false);//used to disable or enable next step button
   let [state, setCurrentState] = useState(0);
   let [confirm, setConfirm] = useState(false);
   const { data: session } = useSession();
@@ -27,7 +26,8 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
   }
   useEffect(() => {
     dispatch(showModal());
-    return () => hideModal();
+    return () => {
+      dispatch(hideModal())};
   }, [dispatch]);
 
   function handleFinish() {
@@ -49,7 +49,7 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
 
   return (
     <WithModal disableClose={true} show={true}>
-      <div className={styles.stepsContainer}>
+      <div className="border-0 rounded-lg shadow-lg relative p-12 flex flex-col w-full outline-none focus:outline-none">
         {confirm && state == detailsToUpdate.length ? (
           <ConfirmSelection />
         ) : (
@@ -63,7 +63,7 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
                 height={70}
               />
             </div>
-            <p className="text-center text-slate-700 my-4 text-2xl">
+            <p className="text-center text-slate-100 my-4 text-3xl">
               <span className="text-cyan">
                 Welcome to <span className="text-cyan-600">Laibu</span>
               </span>

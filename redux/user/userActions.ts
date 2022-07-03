@@ -1,5 +1,5 @@
 import axios from "axios";
-import { api } from "../../utils/urls";
+// import { api } from "../../utils/urls";
 import { showAlert } from "../alert"
 import {
   SET_LOADING,
@@ -7,8 +7,8 @@ import {
   USER_DETAILS,
   DETAILS_TO_UPDATE,
 } from "./userTypes";
-import { validateToken } from "../../utils";
-import jwtDecode from "jwt-decode";
+// import { validateToken } from "../../utils";
+// import jwtDecode from "jwt-decode";
 import { User } from "@prisma/client";
 import {ERROR,Status,SUCCESS} from '../../utils/constants'
 import { assignStatus } from "../../utils/helpers";

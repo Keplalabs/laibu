@@ -4,15 +4,23 @@ import Results from "./Results";
 // import { Searchcontext, SearchQuerycontext, Datacontext } from "../../context";
 import { useSearch } from "../../hooks/search";
 // import { fileSearch } from "../../helpers";
-import { useDispatch,useSelector } from "react-redux";
+import {useAppSelector,useAppDispatch} from '../../redux/hooks'
 import { setSelectedUnit } from "../../redux/selected/selectedActions.js";
 import styles from './search.module.css'
-const Search = (props) => {
+type SearchProps={
+  placeholder?:string
+  source:object[],
+  callback:(x:object)=>void
+  setFilled?:(x:boolean)=>void
+  clear?:boolean | null
+  focus?:boolean | null
+}
+const Search = (props:SearchProps) => {
   let [ref,desc] = ["Enter Unit Code or Name", "name"]; //change this to what your data returns,ref is what will be searched for as user types, desc is what will bew displayed
   const [results, setResults] = useState([]);
-  const course=useSelector(state=>state.selected.selectedCourse)
+  const course=useAppSelector(state=>state.selected.selectedCourse)
 
-  const dispatch =useDispatch()
+  const dispatch =useAppDispatch()
   // const { setfilteredNotes } = useContext(SearchQuerycontext);
   // const { updateRecent } = useContext(Datacontext);
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,6 +31,7 @@ const Search = (props) => {
     setSearchTerm(e.target.value);
   };
   useEffect(()=>{
+    //used to control modal course select options,setFilled is to control next step button
     if(course && props.setFilled)props.setFilled(true)
   },[course,props])
   const handleSubmit = async (e) => {
@@ -59,7 +68,6 @@ const Search = (props) => {
     // }
 
     setResults([]);
-    dispatch(setSelectedUnit(choice));
     if(props.clear){
       setSearchTerm("");
     }

@@ -5,8 +5,8 @@ export const SET_BACKGROUND='SET_BACKGROUND'
 const initialState={
     bgType:bgTypes.color,
     bgColor:defaultBgColor,
-    gradientColor1:"",
-    gradientColor2:"",
+    gradientColor1:"rgb(189,235,250,90%)",
+    gradientColor2:"rgb(250,163,163,70%)",
     imageUrl:""
 }
 export function setBackground(payload){
