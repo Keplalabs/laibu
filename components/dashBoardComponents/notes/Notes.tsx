@@ -9,7 +9,7 @@ function Notes(props) {
 
   return resources.length > 0 ? (
     <div className="p-2 ">
-      <ul className="flex flex-col h-full max-h-[600px]  overflow-y-auto">
+      <ul className="flex flex-col h-full max-h-[500px] 2xl:max-h-[600px]  overflow-y-auto">
         {resources.map((el, i) => {    
          return <NoteItem key={i} item={el} showlink={showlink} />
         }

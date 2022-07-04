@@ -9,7 +9,7 @@ export default function Home() {
   // const { user, error, isLoading } = useUser()
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Laibu</title>
         <meta name="description" content="get access to university of nairobi notes" />
@@ -19,8 +19,9 @@ export default function Home() {
         <Landing />
       </main>
 
-      <footer className={styles.footer}>
-<a href='https://www.freepik.com/vectors/polygon-shape'>Polygon shape vector created by freepik - www.freepik.com</a>    
+      <footer className='text-slate-800 text-center'>
+<a href='https://www.freepik.com/vectors/polygon-shape'>Polygon shape vector created by freepik - www.freepik.com</a>  
+  
       </footer>
     </div>
   )

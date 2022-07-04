@@ -18,8 +18,12 @@ body {
     min-height:100vh;
 
 }
+.font-header{
+
+  font-family: 'Cagliostro', sans-serif;
+}
 h1{
-      font-family: 'Cagliostro', sans-serif;
+  font-family: 'Cagliostro', sans-serif;
 
 }
 a {

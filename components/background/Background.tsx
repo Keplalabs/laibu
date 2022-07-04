@@ -1,16 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks';
 import { bgTypes } from '../../utils/constants';
 
 function Background({}) {
     let [activeBackground,setActiveBackground]=useState({})
-    let backgroundImageUrl=useSelector(state=>state.background.imageUrl)
-    let bgColor=useSelector(state=>state.background.bgColor)
-    let blurred=useSelector(state=>state.background.blurred)
-    let gradientColor1=useSelector(state=>state.background.gradientColor1)
-    let gradientColor2=useSelector(state=>state.background.gradientColor2)
-    let backgroundType=useSelector(state=>state.background.bgType)
-    
+    let {imageUrl,bgColor,blurred,bgType, gradientColor1, gradientColor2}=useAppSelector(state=>state.background)
     const backgroundStyles={
         base:{
         position: "absolute",
@@ -29,14 +24,14 @@ function Background({}) {
         },
         imageBg:{
             // filter:'blur(4px)',
-            backgroundImage:`url(${backgroundImageUrl})`,
+            backgroundImage:`url(${imageUrl})`,
             backgroundRepeat:"no-repeat",
             backgroundPosition:"center",
             backgroundSize:"cover"
         },
     }
     useEffect(()=>{
-        switch(backgroundType){
+        switch(bgType){
             case bgTypes.image:
                 setActiveBackground(backgroundStyles.imageBg)
                 break
@@ -54,7 +49,7 @@ function Background({}) {
         }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[backgroundType])
+    },[bgType])
    
     
     return (

@@ -20,19 +20,17 @@ function SelectUnit({}: Props) {
 
   return (
     <WithModal disableClose={true}>
-      <div className="w-full bg-white/50  backdrop-blur-md border-2 border-white/50 p-8">
+      <div className="w-full bg-accent  backdrop-blur-md border-2 border-white/50 p-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl text-white font-bold mb-8 sm:text-3xl">
+          <h2 className="text-3xl text-primary font-semibold font-mono mb-8 sm:text-3xl">
             Select a unit to get started
           </h2>
 
           {units.length > 0 && year ? (
             <div >
               <div>
-                <h2 className="text-slate-300 text-2xl  ml-4 text-left">
-                  This semester units
-                </h2>
-                <div className="grid xl:grid-cols-3 justify-items-center lg:grid-cols-3 md:grid-cols-2 max-h-96 sm:justify-items-center auto-cols-max sm:grid-cols-1 gap-8 p-4 mt-2 overflow-auto">
+    
+                <div className="">
                 <CurrentSemesterUnits showIcon={true} />
                 </div>
               </div>

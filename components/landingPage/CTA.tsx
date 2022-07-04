@@ -1,15 +1,18 @@
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 const CTA = (props: Props) => {
   return (
-    <div><button className='rounded-md text-white bg-accent px-8 py-4'>
-        Sign In to get started
-    </button>
-
+    <div className=''>
+      <Link href="/auth/login" passHref>
+        <button className="w-[200px] rounded-md hover:cursor-pointer text-white bg-accent px-8 py-4">
+          Get started
+        </button>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default CTA
+export default CTA;

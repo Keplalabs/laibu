@@ -8,9 +8,9 @@ function DefaultNavigation() {
   const [lightTheme, setTheme] = useState(false);
   const textTheme=useSelector(state=>state.background.textTheme)
   return (
-    <div className={`flex ${textTheme=='light'?'text-white':'text-slate-800'} w-full px-24 py-8  justify-between`}>
+    <div className={`flex ${textTheme=='light'?'text-white':'text-slate-800'} w-full group-hover:text-accent px-24 md:w-3/4 lg:w-2/3 mx-auto py-12  justify-between`}>
       <Link href="/" passHref>
-        <h1 className='text-3xl  font-bold'>Laibu</h1>
+        <h1 className='text-3xl  hover:cursor-pointer font-bold'>Laibu</h1>
       </Link>
       <div className={styles.navList}>
         <ul className="flex flex-row p-2 items-center">

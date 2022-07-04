@@ -103,6 +103,9 @@ export function setData(type:string, data:object[]) {
       case RECENT_FILES:
         dispatch(setRecentFiles(data));
         break;
+      case RECENT:
+        dispatch(setRecentUnits(data));
+        break;
       default:
         break;
     }

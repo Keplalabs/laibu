@@ -2,8 +2,16 @@ import { bgTypes, defaultBgColor } from "../../utils/constants";
 
 export const SET_BACKGROUND = "SET_BACKGROUND";
 export const SET_TEXT_THEME = "SET_TEXT_THEME";
-
-const initialState = {
+type BackgroundTypes = {
+  bgType: string;
+  blurred: boolean | undefined;
+  textTheme: string | undefined;
+  bgColor: string | undefined;
+  gradientColor1: string | null;
+  gradientColor2: string | null;
+  imageUrl: string | null;
+};
+const initialState: BackgroundTypes = {
   bgType: bgTypes.color,
   blurred: false,
   textTheme: "dark",
@@ -31,11 +39,11 @@ export const backgroundReducer = (state = initialState, action) => {
         ...initialState,
         ...action.payload,
       };
-      case SET_TEXT_THEME:
-          return{
-              initialState,
-              textTheme:action.payload
-          }
+    case SET_TEXT_THEME:
+      return {
+        initialState,
+        textTheme: action.payload,
+      };
     default:
       return state;
   }

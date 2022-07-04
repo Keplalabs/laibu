@@ -16,7 +16,6 @@ type Props={
 function Tabs(props:Props) {
   const data = props.activeUnitContent;
   const [active, setActive] = useState(0);
-  let [lighttheme, ] = useState(true);
   const [activeData, setActiveData] = useState({ category: "", resources: [] });
   
   const handleClick = (i) => {
@@ -32,7 +31,7 @@ function Tabs(props:Props) {
     }
   }, [active, data, setActiveData]);
   return (
-    <div className="h-full md:p-8 xl:px-12">
+    <div className="h-full  p-4 md:p-8 xl:px-12">
     <TabHeader active={active} handleClick={handleClick}/>
       {!isEmpty(data) ? (
         <div className="transition duration-300 bg-slate-100/40 rounded-md mx-auto">

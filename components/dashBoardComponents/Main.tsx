@@ -4,9 +4,7 @@ import ActiveUnit from "./ActiveUnit/ActiveUnit";
 import CurrentSemesterUnits from "../units/CurrentSemesterUnits";
 import Recent from "./Recent";
 import { useSession } from "next-auth/react";
-import {
-  getData,
-} from "../../redux/data/dataActions";
+import { getData } from "../../redux/data/dataActions";
 import {
   ACTIVE_UNIT,
   bgTypes,
@@ -18,11 +16,11 @@ import {
 import { setLoading } from "../../redux/loaders/loaderActions";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { setBackground } from "../../redux/background";
-import blurredBgImage from "../../public/images/bg/schoolbg.png";
-import dashboardBgImage from "../../public/images/bg/3dbg.jpg";
+// import dashboardBgImage from "../../public/images/bg/3dgeometry.jpg";
 import { fetchUserDetails } from "../../redux/user/userActions";
 import { retreiveActiveUnit } from "../../redux/search/SearchActions";
 import { isEmpty } from "../../utils/helpers";
+import { useBeforeunload } from "react-beforeunload";
 
 function Main() {
   let [bgType, setBgType] = useState(bgTypes.image);
@@ -35,6 +33,9 @@ function Main() {
   const { selectedUnit, selectedUnitCode } = useAppSelector(
     (state) => state.search
   );
+  useBeforeunload((event) => {
+    localStorage.setItem(ACTIVE_UNIT, JSON.stringify(selectedUnit));
+  });
 
   useEffect(() => {
     if (session && session.user) {
@@ -43,13 +44,14 @@ function Main() {
       dispatch(fetchUserDetails(session.user));
     }
   }, [dispatch, session]);
-
   useEffect(() => {
-    const bgStyle = {
-      bgType,
-      imageUrl: modalIsVisible ? blurredBgImage.src : dashboardBgImage.src,
+    const bgStyle2 = {
+      bgType: bgTypes.color,
     };
-    dispatch(setBackground(bgStyle));
+
+    dispatch(setBackground(bgStyle2));
+  }, [dispatch]);
+  useEffect(() => {
     //set semester units
     if (isEmpty(selectedUnit)) {
       dispatch(retreiveActiveUnit());
@@ -70,19 +72,14 @@ function Main() {
   }, [courses, session, units, dispatch, bgType, modalIsVisible, selectedUnit]);
 
   return (
-    <div className="flex w-full gap-4 px-12">
+    <div className="flex w-full flex-col md:flex-row gap-4 px-8 md:px-12">
       {<SignUpSteps />}
-      <div className="w-4/5">
+      <div className="w-full md:w-4/5">
         <ActiveUnit />
       </div>
-      <div className="flex flex-col w-1/4 gap-8">
+      <div className="flex flex-col md:w-1/4 gap-8">
         <Recent />
-      <div className="h-full md:w-5/ sm:w-full overflow-auto justify-self-center sm:row-start-2 sm:col-auto md:row-start-2 md:row-end-4 md:col-start-3">
-        <h2 className="text-xl text-center mb-4 font-bold font-sans">Current Semester Units</h2>
-        <div className="overflow-auto p-4 flex flex-col items-center bg-slate-100/30 rounded-md backdrop-blur-lg max-h-[520px] ">
-          <CurrentSemesterUnits showIcon={false} />
-        </div>
-      </div>
+        <CurrentSemesterUnits showIcon={false} />
       </div>
     </div>
   );

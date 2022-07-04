@@ -20,9 +20,9 @@ function DashNavbar() {
 
   return (
     <>
-      <div className='flex justify-between items-center px-12 py-4'>
+      <div className='flex flex-wrap justify-between items-center px-18 lg:px-36 py-4 md:py-8'>
         <Link href="/" passHref>
-          <a className={styles.logo}>LAIBU</a>
+          <h1 className='hover:cursor-pointer text-2xl'>Laibu</h1>
         </Link>
         <div className={styles.searchContainer}>
           <Search source={units} callback={setActiveUnit} />

@@ -45,7 +45,7 @@ function ActiveUnit({}: Props) {
   }, [dispatch, selectedUnitCode,activeUnit]);
  
   return selectedUnitCode ? (
-    <div className="grid-flow-col border h-full w-full bg-slate-100/30 bg-clip-padding rounded-lg backdrop-blur-lg bg-opacity-10 border-white/50">
+    <div className=" w-full bg-slate-100/30  bg-clip-padding rounded-lg backdrop-blur-lg bg-opacity-10 border-4 border-white/50">
       {!isEmpty(activeUnitContent)?<ActiveUnitHeader activeUnitContent={activeUnitContent} />:null}
       {!isEmpty(activeUnitContent)?<Tabs activeUnitContent={activeUnitContent}/>:<TabSkeleton/>}
     </div>
