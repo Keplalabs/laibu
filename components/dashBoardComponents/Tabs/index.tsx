@@ -32,10 +32,10 @@ function Tabs(props:Props) {
     }
   }, [active, data, setActiveData]);
   return (
-    <div className="h-full">
+    <div className="h-full md:p-8 xl:px-12">
     <TabHeader active={active} handleClick={handleClick}/>
       {!isEmpty(data) ? (
-        <div className="transition duration-300 bg-slate-100/40 xl:w-5/6 mx-auto">
+        <div className="transition duration-300 bg-slate-100/40 rounded-md mx-auto">
           <Notes showlink={true} currentData={activeData} />
         </div>
       ) :null}

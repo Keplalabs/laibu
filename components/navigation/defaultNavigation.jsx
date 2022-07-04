@@ -1,15 +1,19 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Link from "next/link";
 import styles from "./Navigation.module.css";
+import { useSelector } from 'react-redux';
+import { bgTypes } from "../../utils/constants";
 
 function DefaultNavigation() {
+  const [lightTheme, setTheme] = useState(false);
+  const textTheme=useSelector(state=>state.background.textTheme)
   return (
-    <div className={styles.navBar}>
+    <div className={`flex ${textTheme=='light'?'text-white':'text-slate-800'} w-full px-24 py-8  justify-between`}>
       <Link href="/" passHref>
-        <a className={styles.logo}>Laibu</a>
+        <h1 className='text-3xl  font-bold'>Laibu</h1>
       </Link>
       <div className={styles.navList}>
-        <ul className="text-purple-800 flex flex-row p-2 items-center">
+        <ul className="flex flex-row p-2 items-center">
           <li>
             <Link href="/about">
               <a>About</a>

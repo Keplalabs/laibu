@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styles from "./Landing.module.css";
+import CTA from "./CTA";
 import Image from "next/image";
 import landingPic from "../../public/images/BoyReading.png";
 import Search from "../search/Search";
@@ -22,22 +23,15 @@ const Landing = () => {
     }
   }, [dispatch, units]);
   return (
-    <div className={styles.firstSight}>
-      <div className={styles.LandingImg}>
-        <Image src={landingPic} alt="landing preview pic" />
-      </div>
-
-      <div className={styles.rightSection}>
-        <div className="flex items-center flex-col">
-          <h1 className="text-5xl font-bold">
-            <LandingHeader>Laibu</LandingHeader>
-          </h1>
-          <p className="text-center text-2xl text-slate-700">
-            A place where you can access all your course notes and more{" "}
+    <div className='px-24 py-16'>
+        <div className="flex items-center justify-center flex-col gap-4 w-1/2">
+            <h1 className='text-xl text-accent font-bold '>Laibu</h1>
+          <p className="text-6xl  font-sans font-bold text-slate-700">
+Never have to worry about notes again
           </p>
-          <Search source={units} placeholder="Search Unit code or Name" />
+          <CTA/>
+          {/* <Search source={units} placeholder="Search Unit code or Name" /> */}
         </div>
-      </div>
     </div>
   );
 };

@@ -17,7 +17,7 @@ export default Dashboard;
 export const getServerSideProps = async (ctx) => {
   const { req } = ctx;
   const session = await getSession({ req });
-  if (session) {
+  if (!session) {
     return {
       redirect: {
         destination: "/auth/login",

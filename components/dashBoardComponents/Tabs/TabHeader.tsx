@@ -67,7 +67,7 @@ function TabHeader(props: Props) {
             // className={lighttheme?styles.tabNav:styles.tabNavDark}
             
           >
-            <li className="tab-nav-item font" key={i}>
+            <li className="tab-nav-item text-lg capitalize ml-2" key={i}>
               {tab.label}
               <span
                 className={props.active === i ? "active slider" : "slider"}

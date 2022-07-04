@@ -2,14 +2,14 @@ import React,{useState,useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import { bgTypes } from '../../utils/constants';
 
-type Props={
-    bgType:string,
-    bgImgUrl:string,
-    bgColor:string,
-}
-function Background({bgType,bgImgUrl='',bgColor='#fff'}:Props) {
+function Background({}) {
     let [activeBackground,setActiveBackground]=useState({})
-    console.log(bgImgUrl)
+    let backgroundImageUrl=useSelector(state=>state.background.imageUrl)
+    let bgColor=useSelector(state=>state.background.bgColor)
+    let blurred=useSelector(state=>state.background.blurred)
+    let gradientColor1=useSelector(state=>state.background.gradientColor1)
+    let gradientColor2=useSelector(state=>state.background.gradientColor2)
+    let backgroundType=useSelector(state=>state.background.bgType)
     
     const backgroundStyles={
         base:{
@@ -21,21 +21,27 @@ function Background({bgType,bgImgUrl='',bgColor='#fff'}:Props) {
         width:"100%",
         height:"100%",
         },
-      
+        gradientBg:{
+            linearGradient:`45deg ${gradientColor1} ${gradientColor2}`
+        },
         colorBg:{
             backgroundColor:bgColor
         },
         imageBg:{
+            // filter:'blur(4px)',
+            backgroundImage:`url(${backgroundImageUrl})`,
             backgroundRepeat:"no-repeat",
             backgroundPosition:"center",
-            backgroundSize:"contain",
-            
+            backgroundSize:"cover"
         },
     }
     useEffect(()=>{
-        switch(bgType){
+        switch(backgroundType){
             case bgTypes.image:
                 setActiveBackground(backgroundStyles.imageBg)
+                break
+            case bgTypes.gradient:
+                setActiveBackground(backgroundStyles.gradientBg)
                 break
             case bgTypes.color:
                 setActiveBackground(backgroundStyles.colorBg)
@@ -48,12 +54,12 @@ function Background({bgType,bgImgUrl='',bgColor='#fff'}:Props) {
         }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[bgType])
+    },[backgroundType])
    
     
     return (
-        // <div style={{...backgroundStyles.base,...activeBackground}}>
-        <div className={`absolute w-full min-h-screen top-0 left-0 ${bgType==bgTypes.image?``:""} ${bgType==bgTypes.color&&`bg-${bgColor}-500`}`} >
+        <div style={{...backgroundStyles.base,...activeBackground}}>
+            
         </div>
     )
 }

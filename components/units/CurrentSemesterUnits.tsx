@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setLoading } from "../../redux/loaders/loaderActions";
 import { hideModal } from "../../redux/modal/modalActions";
 import { setSelectedUnit } from "../../redux/search/SearchActions";
+import CurrentSemSkeleton from "../Skeletons/CurrentSemSkeleton";
 type Props={
   showIcon:boolean
 }
@@ -21,7 +22,7 @@ function CurrentSemesterUnits(props:Props) {
  
   return (
     <>
-      {currentSemesterUnits.length > 0 &&
+      {currentSemesterUnits.length > 0 ?
         currentSemesterUnits.map((unit: Unit, i: number) => (
           <div className="my-2" key={i}>
             <button
@@ -51,7 +52,8 @@ function CurrentSemesterUnits(props:Props) {
               </span>}
             </button>
           </div>
-        ))}
+        )):<CurrentSemSkeleton/>
+      }
     </>
   );
 }

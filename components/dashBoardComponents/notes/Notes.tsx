@@ -8,8 +8,8 @@ function Notes(props) {
   let showlink = props.showlink;
 
   return resources.length > 0 ? (
-    <div className="p-2 xl:h-5/6">
-      <ul className="notes-list">
+    <div className="p-2 ">
+      <ul className="flex flex-col h-full max-h-[600px]  overflow-y-auto">
         {resources.map((el, i) => {    
          return <NoteItem key={i} item={el} showlink={showlink} />
         }

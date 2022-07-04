@@ -12,6 +12,7 @@ import {
 import { User } from "@prisma/client";
 import {ERROR,Status,SUCCESS} from '../../utils/constants'
 import { assignStatus } from "../../utils/helpers";
+import { filterCurrentSemesterUnits } from "../data/dataActions";
 
 export function setUserDetails(user) {
   return {
@@ -109,8 +110,9 @@ export function fetchUserDetails(userData) {
     dispatch(setMissingUserInfo(missing));
   }
   else if(user.status===Status.FACULTY){
-    dispatch(setUserDetails({...user,status:Status.FACULTY}))
+   await  dispatch(setUserDetails({...user,status:Status.FACULTY}))
   }
+  await dispatch(filterCurrentSemesterUnits())
 }
     catch(err){
       dispatch(showAlert({message:err.message,type:ERROR }))

@@ -20,7 +20,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        footer
+<a href='https://www.freepik.com/vectors/polygon-shape'>Polygon shape vector created by freepik - www.freepik.com</a>    
       </footer>
     </div>
   )

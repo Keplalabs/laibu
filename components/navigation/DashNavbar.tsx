@@ -20,13 +20,27 @@ function DashNavbar() {
 
   return (
     <>
-      <div className={styles.navBar}>
+      <div className='flex justify-between items-center px-12 py-4'>
         <Link href="/" passHref>
           <a className={styles.logo}>LAIBU</a>
         </Link>
         <div className={styles.searchContainer}>
           <Search source={units} callback={setActiveUnit} />
         </div>
+          <div className={styles.navList}>
+        <ul className="flex flex-row p-2 items-center">
+          <li>
+            <Link href="/about">
+              <a>About</a>
+            </Link>
+          </li>
+          <li>
+            <button onClick={()=>signOut()} className='font-bold'>
+              <a>Logout</a>
+            </button>
+          </li>
+        </ul>
+      </div>
       </div>
     </>
   );

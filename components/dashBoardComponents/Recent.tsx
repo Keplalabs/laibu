@@ -14,9 +14,9 @@ function Recent() {
   const unit = useAppSelector((state) => state.search.selectedUnitCode);
 
   return (
-    <>
-    { !isEmpty(recentunits)&&getObjLength(recentunits)>1?(<ul className="flex flex-col  max-h-56 overflow-auto items-center">
-        <h2 className="text-xl">Recent Units</h2>
+    <div className=' p-4'>
+    { !isEmpty(recentunits)&&getObjLength(recentunits)>1?(<ul className="flex flex-col bg-slate-100/30 backdrop-blur-lg bg-opacity-10 group focus:outline-none focus:ring max-h-[300px]  items-center">
+        <span className="text-xl font-bold">Recent Units</span>
         {!isEmpty(recentunits) && recentunits
           ? Object.keys(recentunits)
               .filter((item) => item !== unit)
@@ -33,9 +33,10 @@ function Recent() {
                   </li>
                 );
               })
-          : null}
+          : null
+          }
       </ul>):null}
-    </>
+    </div>
   );
 }
 
