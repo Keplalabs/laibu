@@ -14,6 +14,7 @@ import { featureProps } from "./propTypes";
 
 const Landing = () => {
   const dispatch = useAppDispatch();
+    const bgUrl:string=useAppSelector(state=>state.background.imageUrl)
   const units = useAppSelector((state) => state.data.units);
   const features:featureProps[]=[
     {
@@ -42,7 +43,10 @@ description:"Take your own notes while reading any document"
       dispatch(getData(UNITS));
       dispatch(setLoading(false));
     }
-    dispatch(setBackground(bg));
+       if(bgUrl!=landingPic.src){
+      dispatch(setBackground(bg));
+    }
+
     return () => {
       dispatch(setLoading(false));
       // dispatch(setBackground({
@@ -52,15 +56,15 @@ description:"Take your own notes while reading any document"
       // }));
 
     };
-  }, [dispatch, units]);
+  }, [dispatch, units, bgUrl]);
   return (
     <div className="px-8 md:px-24 2xl:px-48 py-12 ">
       <div className="flex items-center text-center justify-center flex-col gap-8 md:w-[600px] mx-auto">
         <h1 className="text-xl text-accent font-bold ">Laibu</h1>
-        <p className="md:text-6xl text-5xl break-words font-header font-bold text-white">
+        <p data-id='vp' className="md:text-6xl text-5xl break-words font-header font-bold text-white">
           Never have to worry about notes again
         </p>
-        <p className="text-slate-300  text-2xl w-3/4 font-header md:text-3xl">
+        <p data-id='landing-description' className="text-slate-300  text-2xl w-3/4 font-header md:text-3xl">
           Laibu is a platform for students to access all course content
         </p>
         <CTA />
