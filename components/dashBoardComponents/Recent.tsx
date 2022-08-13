@@ -27,7 +27,7 @@ function Recent() {
     
                     <button onClick={()=>dispatch(setSelectedUnit(recentUnits[code]))} className="flex flex-col items-left w-full hover:text-accent justify-between px-3 py-2 transition-colors bg-indigo-600 border border-indigo-600 rounded-lg hover:bg-transparent group focus:outline-none focus:ring">
                       <span className="text-xl mb-1">
-                        {recentUnits[code].name.toLowerCase()}
+                        {recentUnits[code]?.name!.toLowerCase()}
                       </span>
                       <span className="text-lg text-slate-300">{code}</span>
                     </button>

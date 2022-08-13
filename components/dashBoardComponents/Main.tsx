@@ -39,8 +39,6 @@ function Main() {
 
   useEffect(() => {
     if (session && session.user) {
-      console.log(session.user);
-
       dispatch(fetchUserDetails(session.user));
     }
   }, [dispatch, session]);

@@ -119,10 +119,12 @@ export function getData(type:string) {
           return;
         }
     const data = getLocalData(type);
+
     if (data) {
       dispatch(setData(type, data));
       return
     }
+    else if(type===RECENT)return;
      else {
       let url = "";
       switch (type) {
