@@ -17,6 +17,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Landing />
+        
       </main>
 
       <footer className='text-slate-800 text-center'>

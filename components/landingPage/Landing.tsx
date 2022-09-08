@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import CTA from "./CTA";
 import Features from './Features'
-import landingPic from "../../public/images/bg/abstract.png";
+import boyPic from "../../public/images/bg/boy.png";
 import revisionIcon from "../../public/icons/revisionIcon.png";
 import notesIcon from "../../public/icons/notesIcon.png";
 import targetIcon from "../../public/icons/targetIcon.png";
@@ -11,7 +11,7 @@ import { setBackground } from "../../redux/background";
 import { UNITS, bgTypes } from "../../utils/constants";
 import { setLoading } from "../../redux/loaders/loaderActions";
 import { featureProps } from "./propTypes";
-
+import Image from 'next/image'
 const Landing = () => {
   const dispatch = useAppDispatch();
   const units = useAppSelector((state) => state.data.units);
@@ -34,8 +34,7 @@ description:"Take your own notes while reading any document"
 ]
   useEffect(() => {
     let bg = {
-      bgType: bgTypes.image,
-      imageUrl: landingPic.src,
+      bgType: bgTypes.color,
       textTheme: "light",
     };
     if (units.length == 0) {
@@ -54,17 +53,20 @@ description:"Take your own notes while reading any document"
     };
   }, [dispatch, units]);
   return (
-    <div className="px-8 md:px-24 2xl:px-48 py-12 ">
-      <div className="flex items-center text-center justify-center flex-col gap-8 md:w-[600px] mx-auto">
-        <h1 className="text-xl text-accent font-bold ">Laibu</h1>
-        <p className="md:text-6xl text-5xl break-words font-header font-bold text-white">
-          Never have to worry about notes again
+    <div className="">
+      <div className="flex justify-center">
+
+      <div className="flex text-left justify-center flex-col gap-6 md:w-1/3 ">
+        <p className="md:text-5xl text-4xl break-words font-header font-bold text-white">
+        Read anywhere anytime
         </p>
-        <p className="text-slate-300  text-2xl w-3/4 font-header md:text-3xl">
-          Laibu is a platform for students to access all course content
+        <p className="text-slate-300  text-2xl font-header w-3/4">
+      gain access to personalized course content
         </p>
         <CTA />
         {/* <Search source={units} placeholder="Search Unit code or Name" /> */}
+      </div>
+      <Image src={boyPic.src} width={500} height={500} alt='boy reading with computer'/>
       </div>
         <Features features={features}/>
     </div>

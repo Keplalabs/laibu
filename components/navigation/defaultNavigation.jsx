@@ -8,7 +8,7 @@ function DefaultNavigation() {
   const [lightTheme, setTheme] = useState(false);
   const textTheme=useSelector(state=>state.background.textTheme)
   return (
-    <div className={`flex ${textTheme=='light'?'text-white':'text-slate-800'} w-full group-hover:text-accent px-24 md:w-3/4 lg:w-2/3 mx-auto py-12  justify-between`}>
+    <div className={`flex ${textTheme=='light'?'text-white':'text-slate-800'} w-full group-hover:text-accent px-48 p-2 pt-6 justify-between`}>
       <Link href="/" passHref>
         <h1 className='text-3xl  hover:cursor-pointer font-bold'>Laibu</h1>
       </Link>
@@ -21,7 +21,7 @@ function DefaultNavigation() {
           </li>
           <li>
             <Link href="/auth/login">
-              <a>Login</a>
+              <a className="bg-accent py-2 px-6 rounded-full">Login</a>
             </Link>
           </li>
         </ul>
