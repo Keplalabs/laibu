@@ -1,37 +1,39 @@
-import { DETAILS_TO_UPDATE, SET_USER_TOKEN, USER_DETAILS } from "./userTypes";
-interface UserTypes{
-    course:string,
-    year:number,
-    semester:number,
-    status:string,
-    loading:boolean,
-    detailsToUpdate:string[],
+import { Status } from "../../utils/constants";
+import {USER_DETAILS } from "./userTypes";
+export type UserTypes = {
+  course: string;
+  year: number;
+  uid: string;
+  email:string,
+  username:string,
+  semester: number;
+  role: string | null;
+  registeredUnits: string[]|null;
+  moderatingUnits: string[]|null;
+};
+// detailsToUpdate:string[],
 
-}
-const initialState:UserTypes={
-    course:null,
-    year:null,
-    semester:null,
-    status:null,
-    loading:false,
-    detailsToUpdate:[],
-}
+const initialState: UserTypes = {
+  course: null,
+  uid: null,
+  email:"",
+  username:"",
+  year: null,
+  semester: null,
+  role: Status.STUDENT,
+  registeredUnits: [],
+  moderatingUnits: [],
+};
 
-export function userReducer(state=initialState,action){
+export function userReducer(state = initialState, action) {
+  switch (action.type) {
+    case USER_DETAILS:
+      return {
+        ...state,
+        ...action.payload,
+      };
 
-    switch(action.type){
-        case USER_DETAILS:
-            return{
-                ...state,
-                ...action.payload
-            }
-        case DETAILS_TO_UPDATE:
-            return {
-                ...state,
-                detailsToUpdate:action.payload
-            }
-         
-        default:
-            return state
-    }
+    default:
+      return state;
+  }
 }

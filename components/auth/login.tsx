@@ -6,70 +6,89 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import bgImg from "../../public/images/bg/abstract.png";
 import { setBackground } from "../../redux/background";
+import { showAlert } from "../../redux/alert";
 import { bgTypes } from "../../utils/constants";
-import { DisappearedLoading	 } from "react-loadingg";
+import { DisappearedLoading } from "react-loadingg";
 import { useAppSelector } from "../../redux/hooks";
-
+import { supabase } from "../../services/supabase";
+import { ERROR } from "../../utils/constants";
+import GoogleLoginButton from "../styledComponents/SocialIcons/GoogleButton";
 const Login = () => {
   const [showSpinner, setShowSpinner] = useState(false);
-  const { data: session, status } = useSession();
-  const bgUrl:string=useAppSelector(state=>state.background.imageUrl)
+  const [email, setEmail] = useState("");
+  // const { data: session, status } = useSession();
+
+  const bgUrl: string = useAppSelector((state) => state.background.imageUrl);
   const router = useRouter();
   const dispatch = useDispatch();
-  useEffect(() => {
-    const loginBg = {
-      bgType: bgTypes.image,
-      imageUrl: bgImg.src,
-      blurred: true,
-      textTheme:'light'
-    };
 
-
-    dispatch(setLoading(false));
-    if(bgUrl!=bgImg.src){
-      dispatch(setBackground(loginBg));
+  const handleLogin = async () => {
+  
+    console.log('login')
+    try {
+      const { error } = await supabase.auth.signIn({ email });
+      if (error) throw error;
+      dispatch(showAlert({message:"Check your email for the login link!"}));
+    } catch (error) {
+      dispatch(showAlert({
+        message: error.error_description || error.message,
+        type: ERROR,
+      }));
+    } finally {
+      setShowSpinner(false);
     }
+  };
+  const signInWithGoogle = async () => {
+    const { user, session, error } = await supabase.auth.signIn({
+      // provider can be 'github', 'google', 'gitlab', and more
+      provider: "google",
+    });
+  };
+  useEffect(() => {
+    dispatch(setLoading(false));
     return () => {
-      setShowSpinner(false)
-      // dispatch(
-      //   setBackground({
-      //     bgType: bgTypes.color,
-      //     blurred: false,
-      //     imageUrl: "",
-      //   })
-      //   );
-      };
-    }, [bgUrl, dispatch]);
-    
-    if (status === "authenticated") {
-    setShowSpinner(false)
-    router.push("/");
-  }
+      setShowSpinner(false);
+    };
+  }, [dispatch]);
 
   return (
-    <>
-      {/* <Background bgType={bgTypes.color} bgImgUrl={loginBg.src} bgColor={""} /> */}
-      {status === "unauthenticated" && (
-        <div className=" px-8 pt-16 md:pt-24 xl:pt-48 pb-8 backdrop-blur-md xl:backdrop-blur-xl flex flex-col gap-8 text-white justify-center items-center">
-          <p className="text-3xl font-sans md:w-1/2  text-center font-bold">
-            Sign in with your{" "}
-            <span className="text-accent">student email</span> to gain access
-            to personalized content
-          </p>
+    <div className="w-full p-8 md:px-6 rounded-md md:pt-8 lg:pt-12">
+      <div className="mx-auto flex md:w-1/2 lg:w-1/3 xl:w-1/4 bg-primarybg flex-col items-center  py-12 px-4 lg:px-8 justify-center gap-y-4">
+        <p className="text-3xl font-sans text-center font-bold">
+          Sign in with your <span className="text-accent ">Student email</span>
+        </p>
+        <form onSubmit={(e)=>{
+          e.preventDefault()
+          setShowSpinner(true);
+          handleLogin()
+        }} className="w-full flex flex-col gap-y-4 justify-center items-center">
+          <input
+            className="p-3 w-full rounded-md"
+            type="email"
+            placeholder="Student Email"
+            value={email}
+            required={true}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <div className="w-full">
             <button
-              className="bg-accent flex justify-center items-center relative w-64 h-12 p-4 text-lg rounded-md "
-              onClick={() => {
-                setShowSpinner(true);
-                signIn("google", { callbackUrl: "/dashboard" });
-              }}
+              type="submit"
+              className="bg-accent w-full text-white flex justify-center items-center relative  p-3 text-lg rounded-md "     
+              disabled={showSpinner}
             >
-              { !showSpinner ?(<span>Sign in with Google</span>): 
-            <DisappearedLoading	color='#ffffff' />
-    }
+              {!showSpinner ? (
+                <span>Send magic link</span>
+              ) : (
+                <span className="w-full p-3">
+                  <DisappearedLoading color="#ffffff" />
+                  </span>
+              )}
             </button>
-        </div>
-      )}
-    </>
+          </div>
+        </form>
+        <GoogleLoginButton handleClick={signInWithGoogle} />
+      </div>
+    </div>
   );
 };
 

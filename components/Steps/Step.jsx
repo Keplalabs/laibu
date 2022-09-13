@@ -1,18 +1,12 @@
-import React,{useEffect} from "react";
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+import React from "react";
 import BasicSelect from "./Select";
-import { useSelector, } from 'react-redux';
 import Search from "../search/Search";
 import styles from "./steps.module.css";
-import { Button } from '../styledComponents/Buttons';
+import { useAppSelector } from "../../redux/hooks";
+import UserName from "./UserName";
 
-function Step({ data={},source,callback,setFilled}) {
-  const course=useSelector(state=>state.selected.selectedCourse)
-  const handleChange = (event) => {
-  };
+function Step({ data = {}, source, callback, setFilled }) {
+  let course = useAppSelector((state) => state.selected.selectedCourse);
 
   return (
     <div className={styles.stepContainer}>
@@ -21,17 +15,35 @@ function Step({ data={},source,callback,setFilled}) {
           setFilled={setFilled}
           dataType={data.dataType}
           options={data.options}
-          placeholder={data.inputPlaceholder} 
+          placeholder={data.inputPlaceholder}
         />
       )}
-      {data.inputType === "text" && (
-        <>
-        <h4 className="text-slate-400 m-4 text-2xl">{data.inputPlaceholder}</h4>
-        {course&&<h3 className={styles.selectedCourse}>{course.name}</h3>}
-        <Search  setFilled={setFilled} clear={true} source={source} callback={callback} placeholder='Course?' /> 
-        </>
-
-      )}
+      {data.inputType === "text" &&
+        (data.dataType == "course" ? (
+          <>
+            <h4 className="text-slate-300  text-center m-4 text-xl">
+              {data.inputPlaceholder}
+            </h4>
+            {course && (
+              <h3 className="p-2 text-xl text-center font-bold text-white bg-green-600 rounded-lg">
+                {course?.name}
+              </h3>
+            )}
+            <Search
+              setFilled={setFilled}
+              clear={true}
+              source={source}
+              callback={callback}
+              placeholder="Course?"
+            />
+          </>
+        ) : data.dataType == "username" ? (
+          <>
+            <UserName data={data} setFilled={setFilled} />
+          </>
+        ) : (
+          <></>
+        ))}
     </div>
   );
 }

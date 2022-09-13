@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors:{
         primary:'#f9f9f9',
+        primarybg:'#E8FFFF',
         accent:'#77059F',
         secondary:''
       }

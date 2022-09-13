@@ -21,7 +21,7 @@ function DefaultNavigation() {
           </li>
           <li>
             <Link href="/auth/login">
-              <a className="bg-accent py-2 px-6 rounded-full">Login</a>
+              <a className="bg-accent text-white py-2 px-6 rounded-full">Login</a>
             </Link>
           </li>
         </ul>

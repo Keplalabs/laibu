@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styles from "./steps.module.css";
 import { OptionButton, SelectedButton } from "../styledComponents/Buttons";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+
 import {
   selectSemester,
   selectYear,
 } from "../../redux/selected/selectedActions";
 const BasicSelect = ({ placeholder, dataType, options,setFilled }) => {
   const [selected, setSelected] = useState(null)
-  const dispatch = useDispatch();
-  const selectedCourse = useSelector((state) => state.selected.selectedCourse);
-  const selectedYear = useSelector((state) => state.selected.selectedYear);
-  const selectedSemester = useSelector(
+  const dispatch = useAppDispatch();
+  const selectedCourse = useAppSelector((state) => state.selected.selectedCourse);
+  const selectedYear = useAppSelector((state) => state.selected.selectedYear);
+  const selectedSemester = useAppSelector(
     (state) => state.selected.selectedSemester
   );
   useEffect(() => {
@@ -49,7 +50,7 @@ const BasicSelect = ({ placeholder, dataType, options,setFilled }) => {
   };
   return (
     <div className={styles.selectContainer}>
-      <h4 className={styles.placeHolder}>{placeholder}</h4>
+      <h4 className='text-xl text-slate-300'>{placeholder}</h4>
       <ul className={styles.selectOptions}>
         {options.map((opt, i) =>
           opt.value === selected ? (

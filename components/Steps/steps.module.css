@@ -81,6 +81,11 @@
     width:100%;
     text-align: center;
 }
+.confirmSelectionContainer div{
+    color:#eeeeee;
+    font-size: 1.1em;
+}
+
 .confirmSelectionContainer p{
     /* text-decoration: ; */
      margin:0.2em 0;
@@ -89,10 +94,13 @@
 .confirmSelectionContainer h3{
     /* margin:0.2rem 0; */
     font-size: 1.5em;
-    color:#0a831e;
+    font-weight:bold;
+    color:rgb(31, 231, 57);
     text-transform: capitalize;
 }
 .confirmSelectionContainer h1{
+    color:rgb(221, 221, 221);
+    font-size: 2.5em;   
     text-transform: capitalize;
     margin-bottom: 1rem;
 }

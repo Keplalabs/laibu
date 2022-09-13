@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import "../styles/alert.css";
-import { useSession,SessionProvider } from "next-auth/react";
 import Navigation from "../components/navigation/Navigation";
 import Landing from "../components/landingPage/Landing";
 import { ThemeProvider } from "styled-components";
@@ -11,7 +10,7 @@ import Alert from "../components/Alert";
 import Loader from "../components/loaders/Loader";
 import Background from "../components/background/Background";
 import { bgTypes } from "../utils/constants";
-
+import { useAuth } from '../hooks/auth';
 const theme = {
   colors: {
     color: "#191919",
@@ -21,17 +20,19 @@ const theme = {
   },
 };
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+  const {signedIn}=useAuth()
   return (
+
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <SessionProvider session={session}>
+        {/* <SessionProvider session={session}> */}
           <Loader />
-          <Navigation />
+          <Navigation signedIn={signedIn} />
           <Background />
           <Alert /> 
             {/* <Landing/> */}
             <Component {...pageProps} />
-        </SessionProvider>
+        {/* </SessionProvider> */}
       </ThemeProvider>
     </Provider>
   );

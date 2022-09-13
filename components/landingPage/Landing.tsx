@@ -32,15 +32,19 @@ title:'Take Notes',
 description:"Take your own notes while reading any document"
   }
 ]
+useEffect(()=>{
+  if(units.length>0){
+  }
+  console.log(units) 
+},[units,dispatch])
   useEffect(() => {
     let bg = {
       bgType: bgTypes.color,
-      textTheme: "light",
     };
     if (units.length == 0) {
       dispatch(getData(UNITS));
-      dispatch(setLoading(false));
     }
+    dispatch(setLoading(false));
     dispatch(setBackground(bg));
     return () => {
       dispatch(setLoading(false));
@@ -54,19 +58,21 @@ description:"Take your own notes while reading any document"
   }, [dispatch, units]);
   return (
     <div className="">
-      <div className="flex justify-center">
+      <div className="flex flex-wrap flex-row-reverse lg:flex-row  justify-center">
 
       <div className="flex text-left justify-center flex-col gap-6 md:w-1/3 ">
-        <p className="md:text-5xl text-4xl break-words font-header font-bold text-white">
+        <p className="md:text-5xl text-4xl break-words font-header font-bold dark:text-white ">
         Read anywhere anytime
         </p>
-        <p className="text-slate-300  text-2xl font-header w-3/4">
+        <p className="dark:text-slate-300 text-slate-600  text-2xl font-header w-3/4">
       gain access to personalized course content
         </p>
         <CTA />
         {/* <Search source={units} placeholder="Search Unit code or Name" /> */}
       </div>
+      <div className=" lg:block">
       <Image src={boyPic.src} width={500} height={500} alt='boy reading with computer'/>
+      </div>
       </div>
         <Features features={features}/>
     </div>

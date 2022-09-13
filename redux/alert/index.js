@@ -1,4 +1,5 @@
 import { initial } from "lodash"
+import { SUCCESS } from '../../utils/constants';
 
 const SHOW_ALERT='SHOW_ALERT'
 const HIDE_ALERT='HIDE_ALERT'
@@ -13,7 +14,7 @@ export function showAlert(alert){
         type:SHOW_ALERT,
         payload:{
             message:alert.message,
-            type:alert.type
+            type:alert.type || SUCCESS
         }
     }
 

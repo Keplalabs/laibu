@@ -9,7 +9,8 @@ import { signOut } from "next-auth/react";
 import { setSelectedUnit } from "../../redux/search/SearchActions";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { Unit } from "../../redux/data/dataTypes";
-
+import { supabase } from '../../services/supabase';
+import { setLoading } from '../../redux/loaders/loaderActions';
 function DashNavbar() {
   const dispatch = useAppDispatch();
   const units = useAppSelector((state) => state.data.units);
@@ -17,7 +18,11 @@ function DashNavbar() {
   const setActiveUnit = (unit:Unit) => {
     dispatch(setSelectedUnit(unit))
   };
+  const handleSignOut=()=>{
+    dispatch(setLoading(true))
+  supabase.auth.signOut()
 
+}
   return (
     <>
       <div className='flex flex-wrap justify-between items-center px-18 lg:px-36 py-4 md:py-8'>
@@ -35,7 +40,8 @@ function DashNavbar() {
             </Link>
           </li>
           <li>
-            <button onClick={()=>signOut()} className='font-bold'>
+            <button onClick={handleSignOut}
+               className='font-bold'>
               <a>Logout</a>
             </button>
           </li>

@@ -8,7 +8,6 @@ import styles from "./steps.module.css";
 import WithModal from "../Modal";
 import { stepData } from "./data";
 import { showModal, hideModal } from "../../redux/modal/modalActions";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { setLoading } from "../../redux/loaders/loaderActions";
 function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
@@ -18,11 +17,8 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
   let [filled, setFilled] = useState(false);//used to disable or enable next step button
   let [state, setCurrentState] = useState(0);
   let [confirm, setConfirm] = useState(false);
-  const { data: session } = useSession();
-  // const user=session.user?session.user:null
   function handleCourseSelecton(course) {
     dispatch(selectCourse(course));
-    // setCurrentState(state=>state+1)
   }
   useEffect(() => {
     dispatch(showModal());
@@ -33,7 +29,7 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
   function handleFinish() {
     setConfirm(true);
     dispatch(setLoading(true));
-    dispatch(hideModal());
+    // dispatch(hideModal());
     updateUserInfo();
   }
   function handleClickNext() {
@@ -48,27 +44,29 @@ function RegistrationSteps({ detailsToUpdate, updateUserInfo }) {
   }, [state]);
 
   return (
-    <WithModal disableClose={true} show={true}>
-      <div className="border-0 rounded-lg shadow-lg relative p-12 flex flex-col w-full outline-none focus:outline-none">
+    <WithModal disableClose={true}>
+      <div className="border-0 rounded-lg shadow-lg bg-accent relative p-12 flex flex-col w-full mx-auto sm:w-2/3 md:w-1/2 lg:w-1/3 2xl:w-1/4 outline-none focus:outline-none">
         {confirm && state == detailsToUpdate.length ? (
           <ConfirmSelection />
         ) : (
           <>
-            <div className="max-w-sm mx-auto space-y-2 flex-col items-center justify-center sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
-              <Image
+            {/* <div className="max-w-sm mx-auto space-y-2 flex-col items-center justify-center sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+              <Imagep-aut
                 className="block mx-auto rounded-full sm:mx-0 sm:shrink-0"
                 src={session.user.image}
                 alt=""
                 width={70}
                 height={70}
               />
-            </div>
-            <p className="text-center text-slate-100 my-4 text-3xl">
-              <span className="text-cyan">
-                Welcome to <span className="text-cyan-600">Laibu</span>
+            </div> */}
+            <p className="text-center mb-4  text-slate-100 text-xl flex flex-col gap-y-2">
+              <span className="mb-6 text-3xl">
+                Welcome to <span className="text-cyan-400">Laibu</span>
               </span>
-              , to offer you the most enjoyable experience we need some
+              <span>
+            to offer you the most enjoyable experience we need some
               information from you
+              </span>
             </p>
             <Step
               data={currentData}

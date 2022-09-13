@@ -24,17 +24,17 @@ function CurrentSemesterUnits(props: Props) {
   }
 
   return (
-    <div className='border-4 border-white/50 bg-slate-100/30 backdrop-blur-lg rounded-lg p-4'> 
-      <h2 className="text-xl text-center text-accent mb-2 font-sans">
+    <div className='backdrop-blur-lg rounded-lg p-4'> 
+      <h2 className="text-xl  text-slate-800 text-center mb-2 font-sans">
         Current Semester Units
       </h2>
-      <div className="overflow-auto flex flex-wrap items-center  rounded-md  max-h-[520px] ">
+      <div className="overflow-auto flex flex-wrap items-center  rounded-md px-2 max-h-[500px] ">
         {currentSemesterUnits.length > 0 ? (
           currentSemesterUnits.map((unit: Unit, i: number) => (
             <div className="my-2 w-full" key={i}>
               <button
                 onClick={() => handleClick(unit)}
-                className="flex w-full text-slate-800 items-center justify-between px-5 py-3 transition-colors bg-slate-200/70 border border-white/70 rounded-lg hover:bg-transparent group focus:outline-none focus:ring"
+                className="flex w-full text-slate-700 items-center justify-between px-5 py-3 transition-colors bg-slate-300/30 border border-white/70 rounded-lg hover:bg-transparent group focus:outline-none focus:ring"
               >
                 <p className="font-medium font-mono text-left flex flex-col justify-start items-start transition-colors group-active:text-indigo-500 group-hover:text-indigo-600">
                   <span className="font-semibold">{unit.name}</span>

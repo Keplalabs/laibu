@@ -5,7 +5,7 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const userData: User = req.body;
+  const userData: User = JSON.parse(req.body);
   if (req.method === "POST") {
     const user = await prisma.user.findUnique({
       where: {

@@ -1,13 +1,19 @@
-import { useSelector,useDispatch } from 'react-redux';
+import { useAppSelector,useAppDispatch } from '../../redux/hooks';
 import React from 'react'
 import styles from './steps.module.css'
 function ConfirmSelection() {
-    const course=useSelector(state=>state.selected.selectedCourse)
-    const year=useSelector(state=>state.selected.selectedYear)
-    const semester=useSelector(state=>state.selected.selectedSemester)
+    const username=useAppSelector(state=>state.selected.selectedUserName)
+    const course=useAppSelector(state=>state.selected.selectedCourse)
+    const year=useAppSelector(state=>state.selected.selectedYear)
+    const semester=useAppSelector(state=>state.selected.selectedSemester)
     return (
         <div className={styles.confirmSelectionContainer}>
             <h1>Confirm details</h1>
+            <div>
+            Username 
+            <h3>{username}</h3>
+            <br/>
+             </div>
             <div>Course 
             <h3>{course.name}</h3>
             <br/>

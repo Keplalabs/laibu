@@ -3,7 +3,6 @@ import SignUpSteps from "./signUpSteps/SignUpSteps";
 import ActiveUnit from "./ActiveUnit/ActiveUnit";
 import CurrentSemesterUnits from "../units/CurrentSemesterUnits";
 import Recent from "./Recent";
-import { useSession } from "next-auth/react";
 import { getData } from "../../redux/data/dataActions";
 import {
   ACTIVE_UNIT,
@@ -17,18 +16,26 @@ import { setLoading } from "../../redux/loaders/loaderActions";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { setBackground } from "../../redux/background";
 // import dashboardBgImage from "../../public/images/bg/3dgeometry.jpg";
-import { fetchUserDetails } from "../../redux/user/userActions";
+import { saveUserData, setUserDetails } from "../../redux/user/userActions";
 import { retreiveActiveUnit } from "../../redux/search/SearchActions";
 import { isEmpty } from "../../utils/helpers";
 import { useBeforeunload } from "react-beforeunload";
-
-function Main() {
+import { UserTypes } from "../../redux/user/userReducer";
+import { setSignUp } from "../../redux/signup";
+import { filterCurrentSemesterUnits } from "../../redux/data/dataActions";
+type propTypes = {
+  userData: UserTypes | null;
+  currentUser: {
+    email: string;
+    uid: string;
+  };
+};
+function Main(props: propTypes) {
   let [bgType, setBgType] = useState(bgTypes.image);
-  const { data: session } = useSession();
   const modalIsVisible = useAppSelector((state) => state.modal.isVisible);
   const dispatch = useAppDispatch();
   const courses = useAppSelector((state) => state.data.courses);
-  const { course, semester, year } = useAppSelector((state) => state.userInfo);
+  const userInfo = useAppSelector((state) => state.userInfo);
   const units = useAppSelector((state) => state.data.units);
   const { selectedUnit, selectedUnitCode } = useAppSelector(
     (state) => state.search
@@ -38,10 +45,15 @@ function Main() {
   });
 
   useEffect(() => {
-    if (session && session.user) {
-      dispatch(fetchUserDetails(session.user));
+    if (props.userData) {
+      console.log('in main:',props.userData)
+      dispatch(setUserDetails(props.userData));
+      
+    } else {
+      dispatch(setSignUp(true));
+   
     }
-  }, [dispatch, session]);
+  }, [dispatch, props.userData]);
   useEffect(() => {
     const bgStyle2 = {
       bgType: bgTypes.color,
@@ -67,11 +79,11 @@ function Main() {
     return () => {
       localStorage.setItem(ACTIVE_UNIT, JSON.stringify(selectedUnit));
     };
-  }, [courses, session, units, dispatch, bgType, modalIsVisible, selectedUnit]);
+  }, [courses, units, dispatch, bgType, modalIsVisible, selectedUnit]);
 
   return (
     <div className="flex w-full flex-col md:flex-row gap-4 px-8 md:px-12">
-      {<SignUpSteps />}
+      {<SignUpSteps currentUser={props.currentUser} />}
       <div className="w-full md:w-4/5">
         <ActiveUnit />
       </div>

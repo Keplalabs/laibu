@@ -20,9 +20,9 @@ function SelectUnit({}: Props) {
 
   return (
     <WithModal disableClose={true}>
-      <div className="w-full bg-accent  backdrop-blur-md border-2 border-white/50 p-8">
+      <div className="mx-auto w-full bg-white/90 shadow3-md md:w-2/3 lg:w-1/2 backdrop-blur-sm p-8">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl text-primary font-semibold font-mono mb-8 sm:text-3xl">
+          <h2 className="text-3xl text-accent font-semibold font-mono mb-8 sm:text-3xl">
             Select a unit to get started
           </h2>
 
